@@ -8,6 +8,7 @@
                     v-model="search.year"
                     label="Year"
                     variant="outlined"
+                    color="primary"
                     :min="0"
                 ></v-number-input>
             </v-col>
@@ -17,10 +18,11 @@
                     v-model="search.market"
                     label="Market"
                     variant="outlined"
+                    color="primary"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" md="2" class="pb-0">
-                <v-btn variant="outlined" height="40px" @click="searchClick" block>Search</v-btn>
+                <v-btn variant="tonal" class="text-none !font-semibold" height="40px" color="primary" @click="searchClick" block>Search</v-btn>
             </v-col>
 
             <v-spacer/>
@@ -34,91 +36,130 @@
         <v-row>
             <v-col cols="12">
                 <v-radio-group v-model="search.holidayType" inline>
-                    <v-radio label="Local" value="local"></v-radio>
-                    <v-radio label="Global" value="global"></v-radio>
+                    <v-radio label="Local" value="local" color="primary"></v-radio>
+                    <v-radio label="Global" value="global" color="primary"></v-radio>
                 </v-radio-group>
             </v-col>
         </v-row>
         
-        <div v-if="holidayType" class="flex gap-x-2.5">
+        <div v-if="item.holidayType" class="flex gap-x-2.5">
             <div>
                 <DatePicker 
                 v-model.range="date"
-                :rows="4" :columns="3" 
-                :initial-page="{ month: 1, year: year }" 
-                :min-page="{ month: 1, year: year }"
-                :max-page="{ month: 12, year: year }"
+                :rows="2" :columns="3" 
+                :initial-page="{ month: 1, year: item.year }" 
+                :min-page="{ month: 1, year: item.year }"
+                :max-page="{ month: 12, year: item.year }"
                 :min-date="new Date()"
-                :key="year"
+                :key="item.year"
                 :attributes="rangeAttributes"
                 :disabled-dates="disabledDates"
                 :is-range="false"
                 @dayclick="handleDayClick"/>
             </div>
-            <div class="w-full">
-                <v-table
-                    fixed-header
-                    class="border max-h-[316px]"
-                >
-                    <thead>
-                        <tr>
-                            <th class="text-left font-weight-bold">Date</th>
-                            <th class="text-left border-s-sm font-weight-bold">canTrade</th>
-                            <th class="text-left border-s-sm font-weight-bold">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            v-if="holidayDate.length > 0"
-                            v-for="item in holidayDate"
-                            :key="formatDate(item.date)"
-                        >
-                            <td>{{ formatDate(item.date) }}</td>
-                            <td class="border-s-sm">
-                                <v-select
-                                    v-model="item.canTrade"
-                                    :items="['Y', 'N']"
-                                    density="compact"
-                                    variant="underlined"
-                                    hide-details
-                                />
-                            </td>
-                            <td class="border-s-sm">
-                                <v-text-field
-                                    v-model="item.description"
-                                    density="compact"
-                                    variant="underlined"
-                                    hide-details
-                                />
-                            </td>
-                        </tr>
-                    </tbody>
-                </v-table>
-                <div v-if="holidayDate.length > 0" class="flex justify-end py-2 gap-x-2">
-                    <v-btn variant="outlined" class="text-none">Confirm</v-btn>
-                    <v-btn variant="outlined" class="text-none">Copy</v-btn>
+
+            <div class="w-full flex flex-col justify-between">
+                <div>
+                    <v-table
+                        fixed-header
+                        class="border max-h-[318px]"
+                        :class="holidayDate.length > 0 ? '!rounded-md' : ''"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="text-center font-weight-bold bg-blue">Date<span class="font-medium"> (DD/MM/YYYY)</span></th>
+                                <th class="text-left border-s-sm font-weight-bold bg-blue">Can trade?</th>
+                                <th class="text-left border-s-sm font-weight-bold bg-blue">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                v-if="holidayDate.length > 0"
+                                v-for="item in holidayDate"
+                                :key="formatDate(item.date)"
+                            >
+                                <td class="text-center" :class="status.confirm ? 'bg-grey-lighten-5' : ''">{{ formatDate(item.date) }}</td>
+                                <td class="border-s-sm" :class="status.confirm ? 'bg-grey-lighten-5' : ''">
+                                    <v-select
+                                        v-model="item.canTrade"
+                                        :items="['Y', 'N', 'X']"
+                                        density="compact"
+                                        variant="underlined"
+                                        :readonly="status.confirm"
+                                        hide-details
+                                    />
+                                </td>
+                                <td class="border-s-sm" :class="status.confirm ? 'bg-grey-lighten-5' : ''">
+                                    <v-text-field
+                                        v-model="item.description"
+                                        density="compact"
+                                        variant="underlined"
+                                        :readonly="status.confirm"
+                                        hide-details
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </v-table>
+                    <div v-if="holidayDate.length > 0" class="flex justify-end py-2 gap-x-2">
+                        <v-btn v-if="!status.confirm" variant="outlined" class="text-none" @click="status.confirm = true">Confirm</v-btn>
+                        <v-btn v-else variant="outlined" class="text-none" @click="status.confirm = false">Edit</v-btn>
+                        <v-btn variant="outlined" class="text-none" @click="status.dialog_copy = true">Copy</v-btn>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-red font-semibold flex justify-center gap-x-2">
+                        <span>N = No Trade and Settlement</span>
+                        <span>Y = Can Trade and Can Settlement</span>
+                        <span>X = Half Day</span>
+                    </p>
                 </div>
             </div>
         </div>
         <div>
         </div>
-        <!-- <v-dialog
-            v-model="dialog"
-            max-width="400"
-            persistent
+        <v-dialog
+            v-model="status.dialog_copy"
+            max-width="600"
         >
-            <v-card
-                prepend-icon="mdi-alert-box"
-                title="Use Google's location service?"
-                text="Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running."
-            >
-                <template v-slot:actions>
-                    <v-spacer/>
-                    <v-btn @click="dialog = false">Yes</v-btn>
-                    <v-btn @click="dialog = false">No</v-btn>
-                </template>
+            <v-card>
+                <v-card-text>
+                    <v-row>
+                        <v-col cols="12" sm="4" class="pb-0">
+                            <v-number-input
+                                density="compact"
+                                v-model="copy.year"
+                                label="Year"
+                                variant="outlined"
+                                color="primary"
+                                :min="0"
+                            ></v-number-input>
+                        </v-col>
+                        <v-col cols="12" sm="4" class="pb-0">
+                            <v-text-field
+                                density="compact"
+                                v-model="copy.market"
+                                label="Market"
+                                variant="outlined"
+                                color="primary"
+                            ></v-text-field>
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col cols="12" class="pt-0">
+                            <v-radio-group v-model="copy.holidayType" inline>
+                                <v-radio label="Local" value="local" color="primary"></v-radio>
+                                <v-radio label="Global" value="global" color="primary"></v-radio>
+                            </v-radio-group>
+                        </v-col>
+                    </v-row>
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn variant="tonal" class="" color="primary" @click="status.dialog_copy = false">Confirm</v-btn>
+                    <v-btn variant="tonal" class="" color="error" @click="cancelCopy">Cancel</v-btn>
+                </v-card-actions>
             </v-card>
-        </v-dialog> -->
+        </v-dialog>
     </v-container>
 </template>
 
@@ -154,11 +195,9 @@ export default {
     },
     data() {
         const now = new Date()
+        const year = now.getFullYear();
         return {
             date: null as any | null,
-            year: now.getFullYear(),
-            market: 'NASDAQ',
-            holidayType: null as string | null,
             selectedRanges: [] as Range[],
             holidayDate: [] as HolidayDes[],
             tempRange: { start: null, end: null } as { start: Date | null, end: Date | null },
@@ -167,6 +206,17 @@ export default {
                     weekdays: [1, 7]
                 }
             }],
+            item: {
+                year,
+                market: 'NASDAQ',
+                holidayType: null as string | null,
+            },
+
+            copy: {
+                year: year + 1,
+                market: null as string | null,
+                holidayType: null as string | null,
+            },
 
             search: {
                 year: now.getFullYear(),
@@ -174,7 +224,11 @@ export default {
                 holidayType: 'global',
             },
 
-            dialog: false
+            status: {
+                confirm: false,
+                dialog_copy: false,
+            },
+
         };
     },
     mounted() {},
@@ -189,7 +243,7 @@ export default {
             if(this.holidayDate.length !== 0) {
                 this.holidayDate.forEach(day => {
                     if(!this.isRangeOverlapping(day.date, day.date, this.selectedRanges)){
-                        this.holidayDate = this.holidayDate.filter(item => item.date !== day.date)
+                        this.holidayDate = this.holidayDate.filter(item => item.date !== day.date);
                     }
                 })
 
@@ -215,6 +269,13 @@ export default {
                         current.setDate(current.getDate() + 1);
                     }
                 })
+
+                this.holidayDate.sort((day1, day2) => {
+                    const monthDiff = day1.date.getMonth() - day2.date.getMonth();
+                    if (monthDiff !== 0) return monthDiff;
+
+                    return day1.date.getDate() - day2.date.getDate();
+                });
             }else {
                 this.selectedRanges.forEach(range => {
                     const current = new Date(range.start);
@@ -293,9 +354,24 @@ export default {
         },
 
         searchClick() {
-            this.year = this.search.year;
-            this.market = this.search.market;
-            this.holidayType = this.search.holidayType;
+            this.item = {
+                ...this.search
+            };
+
+            this.copy = {
+                year: this.item.year + 1,
+                market: this.item.market,
+                holidayType: this.item.holidayType
+            };
+        },
+
+        cancelCopy() {
+            this.status.dialog_copy = false;
+            this.copy = {
+                year: this.item.year + 1,
+                market: this.item.market,
+                holidayType: this.item.holidayType
+            };
         }
     },
     watch: {
