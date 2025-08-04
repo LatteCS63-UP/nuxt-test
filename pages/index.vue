@@ -1,395 +1,615 @@
 <template>
-    <!-- <Calendar /> -->
-    <v-container width="1400px" class="border">
-        <v-row>
-            <v-col cols="12" md="2" class="pb-0">
-                <v-number-input
-                    density="compact"
-                    v-model="search.year"
-                    label="Year"
-                    variant="outlined"
-                    color="primary"
-                    :min="0"
-                ></v-number-input>
-            </v-col>
-            <v-col cols="12" md="2" class="pb-0">
-                <v-text-field
-                    density="compact"
-                    v-model="search.market"
-                    label="Market"
-                    variant="outlined"
-                    color="primary"
-                ></v-text-field>
-            </v-col>
-            <v-col cols="12" md="2" class="pb-0">
-                <v-btn variant="tonal" class="text-none !font-semibold" height="40px" color="primary" @click="searchClick" block>Search</v-btn>
-            </v-col>
+  <SharedUiParentCard>
+    <SharedBreadcrumbs title="Set holiday" />
+    <v-container>
+      <v-row>
+        <v-col cols="12" md="2" class="pb-0">
+          <v-number-input
+            density="compact"
+            v-model="search.year"
+            label="Year"
+            variant="outlined"
+            color="primary"
+            :min="0"
+          ></v-number-input>
+        </v-col>
+        <v-col cols="12" md="2" class="pb-0">
+          <v-text-field
+            density="compact"
+            v-model="search.market"
+            label="Market"
+            variant="outlined"
+            color="primary"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" md="2" class="pb-0">
+          <v-btn
+            variant="tonal"
+            class="text-none !font-semibold"
+            height="40px"
+            color="primary"
+            @click="searchClick"
+            block
+            >Search</v-btn
+          >
+        </v-col>
 
-            <v-spacer/>
-            <v-col cols="12" md="1" class="pb-0">
-                <v-btn variant="outlined" class="text-none" height="40px" block>Import file</v-btn>
-            </v-col>
-            <v-col cols="12" md="1" class="pb-0">
-                <v-btn variant="outlined" class="text-none" height="40px" block>Export file</v-btn>
-            </v-col>
-        </v-row>
-        <v-row>
-            <v-col cols="12">
-                <v-radio-group v-model="search.holidayType" inline>
-                    <v-radio label="Local" value="local" color="primary"></v-radio>
-                    <v-radio label="Global" value="global" color="primary"></v-radio>
-                </v-radio-group>
-            </v-col>
-        </v-row>
-        
-        <div v-if="item.holidayType" class="flex gap-x-2.5">
-            <div>
-                <DatePicker 
-                v-model.range="date"
-                :rows="2" :columns="3" 
-                :initial-page="{ month: 1, year: item.year }" 
-                :min-page="{ month: 1, year: item.year }"
-                :max-page="{ month: 12, year: item.year }"
-                :min-date="new Date()"
-                :key="item.year"
-                :attributes="rangeAttributes"
-                :disabled-dates="disabledDates"
-                :is-range="false"
-                @dayclick="handleDayClick"/>
-            </div>
+        <v-spacer />
+        <v-col cols="12" md="1" class="pb-0">
+          <v-btn
+            variant="outlined"
+            class="text-none"
+            height="40px"
+            block
+            @click="handleImportExcel"
+            :disabled="holidayDate.length > 0 || item.holidayType === null"
+            >Import file</v-btn
+          >
+        </v-col>
+        <v-col cols="12" md="1" class="pb-0">
+          <v-btn
+            variant="outlined"
+            class="text-none"
+            height="40px"
+            block
+            @click="onExport"
+            :disabled="holidayDate.length === 0"
+            >Export file</v-btn
+          >
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <v-radio-group v-model="search.holidayType" inline>
+            <v-radio label="Local" value="local" color="primary"></v-radio>
+            <v-radio label="Global" value="global" color="primary"></v-radio>
+          </v-radio-group>
+        </v-col>
+      </v-row>
 
-            <div class="w-full flex flex-col justify-between">
-                <div>
-                    <v-table
-                        fixed-header
-                        class="border max-h-[318px]"
-                        :class="holidayDate.length > 0 ? '!rounded-md' : ''"
-                    >
-                        <thead>
-                            <tr>
-                                <th class="text-center font-weight-bold bg-blue">Date<span class="font-medium"> (DD/MM/YYYY)</span></th>
-                                <th class="text-left border-s-sm font-weight-bold bg-blue">Can trade?</th>
-                                <th class="text-left border-s-sm font-weight-bold bg-blue">Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr
-                                v-if="holidayDate.length > 0"
-                                v-for="item in holidayDate"
-                                :key="formatDate(item.date)"
-                            >
-                                <td class="text-center" :class="status.confirm ? 'bg-grey-lighten-5' : ''">{{ formatDate(item.date) }}</td>
-                                <td class="border-s-sm" :class="status.confirm ? 'bg-grey-lighten-5' : ''">
-                                    <v-select
-                                        v-model="item.canTrade"
-                                        :items="['Y', 'N', 'X']"
-                                        density="compact"
-                                        variant="underlined"
-                                        :readonly="status.confirm"
-                                        hide-details
-                                    />
-                                </td>
-                                <td class="border-s-sm" :class="status.confirm ? 'bg-grey-lighten-5' : ''">
-                                    <v-text-field
-                                        v-model="item.description"
-                                        density="compact"
-                                        variant="underlined"
-                                        :readonly="status.confirm"
-                                        hide-details
-                                    />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </v-table>
-                    <div v-if="holidayDate.length > 0" class="flex justify-end py-2 gap-x-2">
-                        <v-btn v-if="!status.confirm" variant="outlined" class="text-none" @click="status.confirm = true">Confirm</v-btn>
-                        <v-btn v-else variant="outlined" class="text-none" @click="status.confirm = false">Edit</v-btn>
-                        <v-btn variant="outlined" class="text-none" @click="status.dialog_copy = true">Copy</v-btn>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-red font-semibold flex justify-center gap-x-2">
-                        <span>N = No Trade and Settlement</span>
-                        <span>Y = Can Trade and Can Settlement</span>
-                        <span>X = Half Day</span>
-                    </p>
-                </div>
-            </div>
-        </div>
+      <div v-if="item.holidayType" class="flex gap-x-2.5">
         <div>
+          <DatePicker
+            v-model.range="date"
+            :rows="2"
+            :columns="3"
+            :initial-page="{ month: 1, year: item.year }"
+            :min-page="{ month: 1, year: item.year }"
+            :max-page="{ month: 12, year: item.year }"
+            :min-date="new Date()"
+            :key="item.year"
+            :attributes="rangeAttributes"
+            :disabled-dates="disabledDates"
+            :is-range="false"
+            @dayclick="handleDayClick"
+          />
         </div>
-        <v-dialog
-            v-model="status.dialog_copy"
-            max-width="600"
+
+        <div class="w-full flex flex-col justify-between">
+          <div>
+            <v-table
+              fixed-header
+              class="border-primary border-thin max-h-[318px]"
+              :class="holidayDate.length > 0 ? '!rounded-md' : ''"
+            >
+              <thead>
+                <tr>
+                  <th class="text-center font-weight-bold bg-primary">
+                    Date<span class="font-medium"> (DD/MM/YYYY)</span>
+                  </th>
+                  <th
+                    class="border-primary border-s-sm font-weight-bold bg-primary"
+                    :class="status.confirm ? 'text-center' : 'text-left'"
+                  >
+                    Can trade?
+                  </th>
+                  <th
+                    class="text-left border-primary border-s-sm font-weight-bold bg-primary"
+                  >
+                    Description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-if="holidayDate.length > 0"
+                  v-for="item in holidayDate"
+                  :key="formatDate(item.date)"
+                >
+                  <td
+                    class="text-center"
+                    :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
+                  >
+                    {{ formatDate(item.date) }}
+                  </td>
+                  <td
+                    class="border-s-sm text-center"
+                    :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
+                  >
+                    <span v-if="status.confirm">{{ item.canTrade }}</span>
+                    <v-select
+                      v-else
+                      v-model="item.canTrade"
+                      :items="['Y', 'N', 'X']"
+                      density="compact"
+                      variant="underlined"
+                      hide-details
+                    />
+                  </td>
+                  <td
+                    class="border-s-sm"
+                    :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
+                  >
+                    <span v-if="status.confirm">{{ item.description }}</span>
+                    <v-text-field
+                      v-else
+                      v-model="item.description"
+                      density="compact"
+                      variant="underlined"
+                      :rules="[(v) => !!v || 'This field is required']"
+                      hide-details
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </v-table>
+            <div
+              v-if="holidayDate.length > 0"
+              class="flex justify-end py-2 gap-x-2"
+            >
+              <v-btn v-if="!status.confirm" variant="outlined" class="text-none"
+                >Confirm</v-btn
+              >
+              <v-btn
+                v-else
+                variant="outlined"
+                class="text-none"
+                @click="status.confirm = false"
+                >Edit</v-btn
+              >
+              <v-btn
+                variant="outlined"
+                class="text-none"
+                @click="status.dialog_copy = true"
+                >Copy</v-btn
+              >
+            </div>
+          </div>
+          <div>
+            <p class="text-error font-semibold flex justify-center gap-x-2">
+              <span>N = No Trade and Settlement</span>
+              <span>Y = Can Trade and Can Settlement</span>
+              <span>X = Half Day</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div></div>
+      <v-dialog v-model="status.dialog_copy" max-width="600" persistent>
+        <v-card>
+          <v-card-text>
+            <v-row>
+              <v-col cols="12" sm="4" class="pb-0">
+                <v-number-input
+                  density="compact"
+                  v-model="copy.year"
+                  label="Year"
+                  variant="outlined"
+                  color="primary"
+                  :min="0"
+                ></v-number-input>
+              </v-col>
+              <v-col cols="12" sm="4" class="pb-0">
+                <v-text-field
+                  density="compact"
+                  v-model="copy.market"
+                  label="Market"
+                  variant="outlined"
+                  color="primary"
+                ></v-text-field>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" class="pt-0">
+                <v-radio-group v-model="copy.holidayType" inline>
+                  <v-radio
+                    label="Local"
+                    value="local"
+                    color="primary"
+                  ></v-radio>
+                  <v-radio
+                    label="Global"
+                    value="global"
+                    color="primary"
+                  ></v-radio>
+                </v-radio-group>
+              </v-col>
+            </v-row>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn variant="tonal" class="text-none" color="primary"
+              >Confirm</v-btn
+            >
+            <v-btn
+              variant="tonal"
+              class="text-none"
+              color="error"
+              @click="cancelCopy"
+              >Cancel</v-btn
+            >
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="status.warning" max-width="600" persistent>
+        <v-card title="Warring" :text="status.warning_message">
+          <template v-slot:actions>
+            <v-btn class="ms-auto" @click="status.warning = false">OK</v-btn>
+          </template></v-card
         >
-            <v-card>
-                <v-card-text>
-                    <v-row>
-                        <v-col cols="12" sm="4" class="pb-0">
-                            <v-number-input
-                                density="compact"
-                                v-model="copy.year"
-                                label="Year"
-                                variant="outlined"
-                                color="primary"
-                                :min="0"
-                            ></v-number-input>
-                        </v-col>
-                        <v-col cols="12" sm="4" class="pb-0">
-                            <v-text-field
-                                density="compact"
-                                v-model="copy.market"
-                                label="Market"
-                                variant="outlined"
-                                color="primary"
-                            ></v-text-field>
-                        </v-col>
-                    </v-row>
-                    <v-row>
-                        <v-col cols="12" class="pt-0">
-                            <v-radio-group v-model="copy.holidayType" inline>
-                                <v-radio label="Local" value="local" color="primary"></v-radio>
-                                <v-radio label="Global" value="global" color="primary"></v-radio>
-                            </v-radio-group>
-                        </v-col>
-                    </v-row>
-                </v-card-text>
-                <v-card-actions>
-                    <v-btn variant="tonal" class="" color="primary" @click="status.dialog_copy = false">Confirm</v-btn>
-                    <v-btn variant="tonal" class="" color="error" @click="cancelCopy">Cancel</v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-dialog>
+      </v-dialog>
     </v-container>
+  </SharedUiParentCard>
 </template>
 
 <script lang="ts">
 interface Range {
-    start: Date
-    end: Date
+  start: Date;
+  end: Date;
 }
 interface HolidayDes {
-    date: Date
-    canTrade: string
-    description: string | null
+  date: Date;
+  canTrade: string;
+  description: string | null;
 }
-import { Calendar, DatePicker } from 'v-calendar';
-import 'v-calendar/style.css';
+import { Calendar, DatePicker } from "v-calendar";
+import "v-calendar/style.css";
+import * as XLSX from "xlsx";
 
 export default {
-    components: {
-        Calendar,
-        DatePicker
-    },
-    computed: {
-        rangeAttributes() {
-            return this.selectedRanges.map((range, i) => ({
-                key: `range-${i}`,
-                highlight: 'green',
-                dates: {
-                    start: range.start ? new Date(range.start) : undefined,
-                    end: range.end ? new Date(range.end) : undefined
-                }
-            }));
+  components: {
+    Calendar,
+    DatePicker,
+  },
+  computed: {
+    rangeAttributes() {
+      return this.selectedRanges.map((range, i) => ({
+        key: `range-${i}`,
+        highlight: "green",
+        dates: {
+          start: range.start ? new Date(range.start) : undefined,
+          end: range.end ? new Date(range.end) : undefined,
         },
+      }));
     },
-    data() {
-        const now = new Date()
-        const year = now.getFullYear();
-        return {
-            date: null as any | null,
-            selectedRanges: [] as Range[],
-            holidayDate: [] as HolidayDes[],
-            tempRange: { start: null, end: null } as { start: Date | null, end: Date | null },
-            disabledDates: [{
-                repeat: {
-                    weekdays: [1, 7]
+  },
+  data() {
+    const now = new Date();
+    const year = now.getFullYear();
+    return {
+      date: null as any | null,
+      selectedRanges: [] as Range[],
+      holidayDate: [] as HolidayDes[],
+      tempRange: { start: null, end: null } as {
+        start: Date | null;
+        end: Date | null;
+      },
+      disabledDates: [
+        {
+          repeat: {
+            weekdays: [1, 7],
+          },
+        },
+      ],
+      item: {
+        year,
+        market: "NASDAQ",
+        holidayType: null as string | null,
+      },
+
+      copy: {
+        year: year + 1,
+        market: null as string | null,
+        holidayType: null as string | null,
+      },
+
+      search: {
+        year: now.getFullYear(),
+        market: "NASDAQ",
+        holidayType: "global",
+      },
+
+      status: {
+        confirm: false,
+        dialog_copy: false,
+        warning: false,
+        warning_message: "",
+      },
+    };
+  },
+  mounted() {},
+  methods: {
+    getData() {
+      this.selectedRanges.push({
+        start: new Date("2025-04-01"),
+        end: new Date("2025-04-03"),
+      });
+    },
+
+    allSelectedDates() {
+      if (this.holidayDate.length !== 0) {
+        this.holidayDate.forEach((day) => {
+          if (
+            !this.isRangeOverlapping(day.date, day.date, this.selectedRanges)
+          ) {
+            this.holidayDate = this.holidayDate.filter(
+              (item) => item.date !== day.date
+            );
+          }
+        });
+
+        this.selectedRanges.forEach((range) => {
+          const current = new Date(range.start);
+          const end = new Date(range.end);
+
+          while (current <= end) {
+            const date_same = this.holidayDate.some((day) => {
+              const date_main = current.toISOString().slice(0, 10);
+              const date_check = day.date.toISOString().slice(0, 10);
+              return date_main === date_check;
+            });
+            if (!date_same) {
+              this.holidayDate.push({
+                date: new Date(current),
+                canTrade: "N",
+                description: null,
+              });
+            }
+            current.setDate(current.getDate() + 1);
+          }
+        });
+
+        this.holidayDate.sort((day1, day2) => {
+          const monthDiff = day1.date.getMonth() - day2.date.getMonth();
+          if (monthDiff !== 0) return monthDiff;
+
+          return day1.date.getDate() - day2.date.getDate();
+        });
+      } else {
+        this.selectedRanges.forEach((range) => {
+          const current = new Date(range.start);
+          const end = new Date(range.end);
+
+          while (current <= end) {
+            this.holidayDate.push({
+              date: new Date(current),
+              canTrade: "N",
+              description: null,
+            });
+            current.setDate(current.getDate() + 1);
+          }
+        });
+      }
+    },
+
+    handleDayClick(day: any) {
+      if (this.date) {
+        if (
+          !this.isRangeOverlapping(
+            this.date.start,
+            this.date.end,
+            this.selectedRanges
+          )
+        ) {
+          const diffDays =
+            (this.date.start.getTime() - new Date().getTime()) /
+            (1000 * 60 * 60 * 24);
+          if (diffDays >= 3) {
+            this.selectedRanges.push({
+              start: this.date.start,
+              end: this.date.end,
+            });
+          }
+        } else {
+          this.selectedRanges = this.removeOverlappingRanges(
+            this.date.start,
+            this.date.end,
+            this.selectedRanges
+          );
+        }
+        this.date = null;
+        this.tempRange = { start: null, end: null };
+      } else {
+        const diffDays =
+          (day.date.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24);
+        if (diffDays >= 3) {
+          if (day.weekday !== 1 || day.weekday !== 7) {
+            if (this.tempRange.start && !this.tempRange.end) {
+              const start = this.tempRange.start;
+              const end: Date = day.date;
+              if (start === end) {
+                if (this.isRangeOverlapping(start, end, this.selectedRanges)) {
+                  this.selectedRanges = this.removeOverlappingRanges(
+                    start,
+                    end,
+                    this.selectedRanges
+                  );
                 }
-            }],
-            item: {
-                year,
-                market: 'NASDAQ',
-                holidayType: null as string | null,
-            },
+              }
+              this.tempRange = { start: null, end: null };
+            } else {
+              this.tempRange = { start: day.date, end: null };
+            }
+          }
+        }
+      }
+    },
 
-            copy: {
-                year: year + 1,
-                market: null as string | null,
-                holidayType: null as string | null,
-            },
+    isRangeOverlapping(
+      start: Date,
+      end: Date,
+      ranges: { start: Date; end: Date }[]
+    ) {
+      return ranges.some((range) => {
+        return !(end < range.start || start > range.end);
+      });
+    },
 
-            search: {
-                year: now.getFullYear(),
-                market: 'NASDAQ',
-                holidayType: 'global',
-            },
+    removeOverlappingRanges(
+      start: Date,
+      end: Date,
+      ranges: { start: Date; end: Date }[]
+    ) {
+      return ranges.filter((range) => {
+        const holiday = [{ start: range.start, end: range.end }];
+        return !this.isRangeOverlapping(start, end, holiday);
+      });
+    },
 
-            status: {
-                confirm: false,
-                dialog_copy: false,
-            },
+    formatDate(date: Date, year?: number): string {
+      const d = date.getDate().toString().padStart(2, "0");
+      const m = (date.getMonth() + 1).toString().padStart(2, "0");
+      const y = year || date.getFullYear();
+      return `${y}-${m}-${d}`;
+    },
 
+    searchClick() {
+      this.item = {
+        ...this.search,
+      };
+
+      this.copy = {
+        year: this.item.year + 1,
+        market: this.item.market,
+        holidayType: this.item.holidayType,
+      };
+    },
+
+    cancelCopy() {
+      this.status.dialog_copy = false;
+      this.copy = {
+        year: this.item.year + 1,
+        market: this.item.market,
+        holidayType: this.item.holidayType,
+      };
+    },
+
+    handleImportExcel() {
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = ".xlsx, .xls, .csv";
+      input.style.display = "none";
+
+      input.addEventListener("change", (event: Event) => {
+        const target = event.target as HTMLInputElement;
+        const file = target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = (e: ProgressEvent<FileReader>) => {
+          const result = e.target?.result;
+          if (!result) return;
+
+          const data = new Uint8Array(result as ArrayBuffer);
+          const workbook = XLSX.read(data, { type: "array" });
+
+          const sheetName = workbook.SheetNames[0];
+          if (!sheetName) return;
+
+          const worksheet = workbook.Sheets[sheetName];
+          if (!worksheet) return;
+
+          const jsonData = XLSX.utils.sheet_to_json<Record<string, any>>(
+            worksheet,
+            { defval: "", raw: false }
+          );
+
+          let main_day = null as Date | null;
+          let start = null as Date | null;
+          jsonData.forEach((item: any, index: number) => {
+            const date = new Date(item.holiday_date);
+
+            const diffDays_3 =
+              (date.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24);
+            if (diffDays_3 >= 3) {
+              if (main_day) {
+                if (start) {
+                  const diffDays =
+                    (date.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);
+
+                  if (index === jsonData.length - 1) {
+                    this.selectedRanges.push({ start: main_day, end: start });
+
+                    if (diffDays > 0 && diffDays <= 1) {
+                      this.selectedRanges.push({ start: main_day, end: date });
+                    } else {
+                      this.selectedRanges.push({ start: date, end: date });
+                    }
+                  } else {
+                    if (diffDays > 1) {
+                      this.selectedRanges.push({ start: main_day, end: start });
+
+                      main_day = date;
+                    }
+                  }
+                }
+              } else {
+                main_day = date;
+              }
+              start = date;
+            }
+          });
+
+          this.holidayDate = jsonData.map((item: any) => ({
+            date: new Date(item.holiday_date),
+            canTrade: item.can_trade || "N",
+            description: item.description || null,
+          }));
         };
+
+        reader.readAsArrayBuffer(file);
+      });
+
+      input.click();
     },
-    mounted() {},
-    methods: {
-        getData() {
-            this.selectedRanges.push(
-                { start: new Date('2025-04-01'), end: new Date('2025-04-03') },
-            )
-        },
 
-        allSelectedDates() {
-            if(this.holidayDate.length !== 0) {
-                this.holidayDate.forEach(day => {
-                    if(!this.isRangeOverlapping(day.date, day.date, this.selectedRanges)){
-                        this.holidayDate = this.holidayDate.filter(item => item.date !== day.date);
-                    }
-                })
-
-                this.selectedRanges.forEach(range => {
-                    const current = new Date(range.start);
-                    const end = new Date(range.end);
-
-                    while(current <= end) {
-                        const date_same = this.holidayDate.some(day => {
-                            const date_main = current.toISOString().slice(0, 10);
-                            const date_check = day.date.toISOString().slice(0, 10);
-                            return date_main === date_check;
-                        })
-                        if(!date_same){
-                            this.holidayDate.push(
-                                {
-                                    date: new Date(current),
-                                    canTrade: 'N',
-                                    description: null
-                                }
-                            )
-                        }
-                        current.setDate(current.getDate() + 1);
-                    }
-                })
-
-                this.holidayDate.sort((day1, day2) => {
-                    const monthDiff = day1.date.getMonth() - day2.date.getMonth();
-                    if (monthDiff !== 0) return monthDiff;
-
-                    return day1.date.getDate() - day2.date.getDate();
-                });
-            }else {
-                this.selectedRanges.forEach(range => {
-                    const current = new Date(range.start);
-                    const end = new Date(range.end);
-                    
-                    while(current <= end) {
-                        this.holidayDate.push(
-                            {
-                                date: new Date(current),
-                                canTrade: 'N',
-                                description: null
-                            }
-                        );
-                        current.setDate(current.getDate() + 1);
-                    }
-                })
-            }
-        },
-
-        handleDayClick(day: any) {
-            if (this.date) {
-                if(!this.isRangeOverlapping(this.date.start, this.date.end, this.selectedRanges)) {
-                    const diffDays = (this.date.start.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
-                    if(diffDays >= 3) {
-                        this.selectedRanges.push({ start: this.date.start, end: this.date.end })
-                    }
-
-                }else {
-                    this.selectedRanges = this.removeOverlappingRanges(this.date.start, this.date.end, this.selectedRanges)
-
-                }
-                this.date = null;
-                this.tempRange = { start: null, end: null }
-
-            }else {
-                const diffDays = (day.date.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
-                if(diffDays >= 3) {
-                    if(day.weekday !== 1 || day.weekday !== 7) {
-                        if (this.tempRange.start && !this.tempRange.end) {
-                            const start = this.tempRange.start
-                            const end: Date = day.date
-                            if(start === end) {
-                                if(this.isRangeOverlapping(start, end, this.selectedRanges)) {
-                                    this.selectedRanges = this.removeOverlappingRanges(start, end, this.selectedRanges)
-
-                                }
-                            }
-                            this.tempRange = { start: null, end: null }
-
-                        }else {
-                            this.tempRange = { start: day.date, end: null }
-                        }
-                    }
-                }
-            }
-        },
-
-        isRangeOverlapping(start: Date, end: Date, ranges: { start: Date, end: Date }[]) {
-            return ranges.some(range => {
-                return !(end < range.start || start > range.end)
-            })
-        },
-
-        removeOverlappingRanges(start: Date, end: Date, ranges: { start: Date, end: Date }[]) {
-            return ranges.filter(range => {
-                const holiday = [{ start: range.start, end: range.end }]
-                return !this.isRangeOverlapping(start, end, holiday)
-            })
-        },
-
-        formatDate(date: Date): string {
-            const d = date.getDate().toString().padStart(2, '0');
-            const m = (date.getMonth() + 1).toString().padStart(2, '0');
-            const y = date.getFullYear();
-            return `${d}-${m}-${y}`;
-        },
-
-        searchClick() {
-            this.item = {
-                ...this.search
-            };
-
-            this.copy = {
-                year: this.item.year + 1,
-                market: this.item.market,
-                holidayType: this.item.holidayType
-            };
-        },
-
-        cancelCopy() {
-            this.status.dialog_copy = false;
-            this.copy = {
-                year: this.item.year + 1,
-                market: this.item.market,
-                holidayType: this.item.holidayType
-            };
-        }
+    onExport() {
+      const dataWS = XLSX.utils.json_to_sheet(
+        this.holidayDate.map((item) => {
+          return {
+            calendar_name:
+              this.item.holidayType === "local" ? "TH-MARKET" : "US-MARKET",
+            exchange_code: this.item.market,
+            holiday_date: item.date,
+            description: item.description || "",
+            can_trade: item.canTrade,
+          };
+        })
+      );
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, dataWS, "Holiday");
+      XLSX.writeFile(wb, `SetUpHoliday_${this.item.year}.csv`, {
+        bookType: "csv",
+      });
     },
-    watch: {
-        selectedRanges: {
-            handler() {
-                this.allSelectedDates();
-            },
-            deep: true
-        }
-    }
+  },
+  watch: {
+    selectedRanges: {
+      handler() {
+        this.allSelectedDates();
+      },
+      deep: true,
+    },
+  },
 };
 </script>
 
 <style>
-.vc-container .vc-weekday-1, .vc-container .vc-weekday-7 {
-    color: #DB4345;
+.vc-container .vc-weekday-1,
+.vc-container .vc-weekday-7 {
+  color: #db4345;
 }
 .vc-header .vc-title {
-    pointer-events: none;
+  pointer-events: none;
 }
 </style>
