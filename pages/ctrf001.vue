@@ -1,254 +1,247 @@
 <template>
-  <SharedUiParentCard>
-    <SharedBreadcrumbs title="Set holiday" />
-    <v-container>
-      <v-row>
-        <v-col cols="12" md="2" class="pb-0">
-          <v-number-input
-            density="compact"
-            v-model="search.year"
-            label="Year"
-            variant="outlined"
-            color="primary"
-            :min="0"
-          ></v-number-input>
-        </v-col>
-        <v-col cols="12" md="2" class="pb-0">
-          <v-text-field
-            density="compact"
-            v-model="search.market"
-            label="Market"
-            variant="outlined"
-            color="primary"
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" md="2" class="pb-0">
-          <v-btn
-            variant="tonal"
-            class="text-none !font-semibold"
-            height="40px"
-            color="primary"
-            @click="searchClick"
-            block
-            >Search</v-btn
-          >
-        </v-col>
+  <v-container width="1400px" class="border">
+    <v-row>
+      <v-col cols="12" md="2" class="pb-0">
+        <v-number-input
+          density="compact"
+          v-model="search.year"
+          label="Year"
+          variant="outlined"
+          color="primary"
+          :min="0"
+        ></v-number-input>
+      </v-col>
+      <v-col cols="12" md="2" class="pb-0">
+        <v-text-field
+          density="compact"
+          v-model="search.market"
+          label="Market"
+          variant="outlined"
+          color="primary"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="12" md="2" class="pb-0">
+        <v-btn
+          variant="tonal"
+          class="text-none !font-semibold"
+          height="40px"
+          color="primary"
+          @click="searchClick"
+          block
+          >Search</v-btn
+        >
+      </v-col>
 
-        <v-spacer />
-        <v-col cols="12" md="1" class="pb-0">
-          <v-btn
-            variant="outlined"
-            class="text-none"
-            height="40px"
-            block
-            @click="handleImportExcel"
-            :disabled="holidayDate.length > 0 || item.holidayType === null"
-            >Import file</v-btn
-          >
-        </v-col>
-        <v-col cols="12" md="1" class="pb-0">
-          <v-btn
-            variant="outlined"
-            class="text-none"
-            height="40px"
-            block
-            @click="onExport"
-            :disabled="holidayDate.length === 0"
-            >Export file</v-btn
-          >
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12">
-          <v-radio-group v-model="search.holidayType" inline>
-            <v-radio label="Local" value="local" color="primary"></v-radio>
-            <v-radio label="Global" value="global" color="primary"></v-radio>
-          </v-radio-group>
-        </v-col>
-      </v-row>
+      <v-spacer />
+      <v-col cols="12" md="1" class="pb-0">
+        <v-btn
+          variant="outlined"
+          class="text-none"
+          height="40px"
+          block
+          @click="handleImportExcel"
+          :disabled="holidayDate.length > 0 || item.holidayType === null"
+          >Import file</v-btn
+        >
+      </v-col>
+      <v-col cols="12" md="1" class="pb-0">
+        <v-btn
+          variant="outlined"
+          class="text-none"
+          height="40px"
+          block
+          @click="onExport"
+          :disabled="holidayDate.length === 0"
+          >Export file</v-btn
+        >
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <v-radio-group v-model="search.holidayType" inline>
+          <v-radio label="Local" value="local" color="primary"></v-radio>
+          <v-radio label="Global" value="global" color="primary"></v-radio>
+        </v-radio-group>
+      </v-col>
+    </v-row>
 
-      <div v-if="item.holidayType" class="flex gap-x-2.5">
-        <div>
-          <DatePicker
-            v-model.range="date"
-            :rows="2"
-            :columns="3"
-            :initial-page="{ month: 1, year: item.year }"
-            :min-page="{ month: 1, year: item.year }"
-            :max-page="{ month: 12, year: item.year }"
-            :min-date="new Date()"
-            :key="item.year"
-            :attributes="rangeAttributes"
-            :disabled-dates="disabledDates"
-            :is-range="false"
-            @dayclick="handleDayClick"
-          />
-        </div>
-
-        <div class="w-full flex flex-col justify-between">
-          <div>
-            <v-table
-              fixed-header
-              class="border-primary border-thin max-h-[318px]"
-              :class="holidayDate.length > 0 ? '!rounded-md' : ''"
-            >
-              <thead>
-                <tr>
-                  <th class="text-center font-weight-bold bg-primary">
-                    Date<span class="font-medium"> (DD/MM/YYYY)</span>
-                  </th>
-                  <th
-                    class="border-primary border-s-sm font-weight-bold bg-primary"
-                    :class="status.confirm ? 'text-center' : 'text-left'"
-                  >
-                    Can trade?
-                  </th>
-                  <th
-                    class="text-left border-primary border-s-sm font-weight-bold bg-primary"
-                  >
-                    Description
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-if="holidayDate.length > 0"
-                  v-for="item in holidayDate"
-                  :key="formatDate(item.date)"
-                >
-                  <td
-                    class="text-center"
-                    :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
-                  >
-                    {{ formatDate(item.date) }}
-                  </td>
-                  <td
-                    class="border-s-sm text-center"
-                    :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
-                  >
-                    <span v-if="status.confirm">{{ item.canTrade }}</span>
-                    <v-select
-                      v-else
-                      v-model="item.canTrade"
-                      :items="['Y', 'N', 'X']"
-                      density="compact"
-                      variant="underlined"
-                      hide-details
-                    />
-                  </td>
-                  <td
-                    class="border-s-sm"
-                    :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
-                  >
-                    <span v-if="status.confirm">{{ item.description }}</span>
-                    <v-text-field
-                      v-else
-                      v-model="item.description"
-                      density="compact"
-                      variant="underlined"
-                      :rules="[(v) => !!v || 'This field is required']"
-                      hide-details
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </v-table>
-            <div
-              v-if="holidayDate.length > 0"
-              class="flex justify-end py-2 gap-x-2"
-            >
-              <v-btn v-if="!status.confirm" variant="outlined" class="text-none"
-                >Confirm</v-btn
-              >
-              <v-btn
-                v-else
-                variant="outlined"
-                class="text-none"
-                @click="status.confirm = false"
-                >Edit</v-btn
-              >
-              <v-btn
-                variant="outlined"
-                class="text-none"
-                @click="status.dialog_copy = true"
-                >Copy</v-btn
-              >
-            </div>
-          </div>
-          <div>
-            <p class="text-error font-semibold flex justify-center gap-x-2">
-              <span>N = No Trade and Settlement</span>
-              <span>Y = Can Trade and Can Settlement</span>
-              <span>X = Half Day</span>
-            </p>
-          </div>
-        </div>
+    <div v-if="item.holidayType" class="flex gap-x-2.5">
+      <div>
+        <DatePicker
+          v-model.range="date"
+          :rows="2"
+          :columns="3"
+          :initial-page="{ month: 1, year: item.year }"
+          :min-page="{ month: 1, year: item.year }"
+          :max-page="{ month: 12, year: item.year }"
+          :min-date="new Date()"
+          :key="item.year"
+          :attributes="rangeAttributes"
+          :disabled-dates="disabledDates"
+          :is-range="false"
+          @dayclick="handleDayClick"
+        />
       </div>
-      <div></div>
-      <v-dialog v-model="status.dialog_copy" max-width="600" persistent>
-        <v-card>
-          <v-card-text>
-            <v-row>
-              <v-col cols="12" sm="4" class="pb-0">
-                <v-number-input
-                  density="compact"
-                  v-model="copy.year"
-                  label="Year"
-                  variant="outlined"
-                  color="primary"
-                  :min="0"
-                ></v-number-input>
-              </v-col>
-              <v-col cols="12" sm="4" class="pb-0">
-                <v-text-field
-                  density="compact"
-                  v-model="copy.market"
-                  label="Market"
-                  variant="outlined"
-                  color="primary"
-                ></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" class="pt-0">
-                <v-radio-group v-model="copy.holidayType" inline>
-                  <v-radio
-                    label="Local"
-                    value="local"
-                    color="primary"
-                  ></v-radio>
-                  <v-radio
-                    label="Global"
-                    value="global"
-                    color="primary"
-                  ></v-radio>
-                </v-radio-group>
-              </v-col>
-            </v-row>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn variant="tonal" class="text-none" color="primary"
+
+      <div class="w-full flex flex-col justify-between">
+        <div>
+          <v-table
+            fixed-header
+            class="border-primary border-thin max-h-[318px]"
+            :class="holidayDate.length > 0 ? '!rounded-md' : ''"
+          >
+            <thead>
+              <tr>
+                <th class="text-center font-weight-bold bg-primary">
+                  Date<span class="font-medium"> (DD/MM/YYYY)</span>
+                </th>
+                <th
+                  class="border-primary border-s-sm font-weight-bold bg-primary"
+                  :class="status.confirm ? 'text-center' : 'text-left'"
+                >
+                  Can trade?
+                </th>
+                <th
+                  class="text-left border-primary border-s-sm font-weight-bold bg-primary"
+                >
+                  Description
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-if="holidayDate.length > 0"
+                v-for="item in holidayDate"
+                :key="formatDate(item.date)"
+              >
+                <td
+                  class="text-center"
+                  :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
+                >
+                  {{ formatDate(item.date) }}
+                </td>
+                <td
+                  class="border-s-sm text-center"
+                  :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
+                >
+                  <span v-if="status.confirm">{{ item.canTrade }}</span>
+                  <v-select
+                    v-else
+                    v-model="item.canTrade"
+                    :items="['Y', 'N', 'X']"
+                    density="compact"
+                    variant="underlined"
+                    hide-details
+                  />
+                </td>
+                <td
+                  class="border-s-sm"
+                  :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
+                >
+                  <span v-if="status.confirm">{{ item.description }}</span>
+                  <v-text-field
+                    v-else
+                    v-model="item.description"
+                    density="compact"
+                    variant="underlined"
+                    :rules="[(v) => !!v || 'This field is required']"
+                    hide-details
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </v-table>
+          <div
+            v-if="holidayDate.length > 0"
+            class="flex justify-end py-2 gap-x-2"
+          >
+            <v-btn v-if="!status.confirm" variant="outlined" class="text-none"
               >Confirm</v-btn
             >
             <v-btn
-              variant="tonal"
+              v-else
+              variant="outlined"
               class="text-none"
-              color="error"
-              @click="cancelCopy"
-              >Cancel</v-btn
+              @click="status.confirm = false"
+              >Edit</v-btn
             >
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <v-dialog v-model="status.warning" max-width="600" persistent>
-        <v-card title="Warring" :text="status.warning_message">
-          <template v-slot:actions>
-            <v-btn class="ms-auto" @click="status.warning = false">OK</v-btn>
-          </template></v-card
-        >
-      </v-dialog>
-    </v-container>
-  </SharedUiParentCard>
+            <v-btn
+              variant="outlined"
+              class="text-none"
+              @click="status.dialog_copy = true"
+              >Copy</v-btn
+            >
+          </div>
+        </div>
+        <div>
+          <p class="text-error font-semibold flex justify-center gap-x-2">
+            <span>N = No Trade and Settlement</span>
+            <span>Y = Can Trade and Can Settlement</span>
+            <span>X = Half Day</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div></div>
+    <v-dialog v-model="status.dialog_copy" max-width="600" persistent>
+      <v-card>
+        <v-card-text>
+          <v-row>
+            <v-col cols="12" sm="4" class="pb-0">
+              <v-number-input
+                density="compact"
+                v-model="copy.year"
+                label="Year"
+                variant="outlined"
+                color="primary"
+                :min="0"
+              ></v-number-input>
+            </v-col>
+            <v-col cols="12" sm="4" class="pb-0">
+              <v-text-field
+                density="compact"
+                v-model="copy.market"
+                label="Market"
+                variant="outlined"
+                color="primary"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="pt-0">
+              <v-radio-group v-model="copy.holidayType" inline>
+                <v-radio label="Local" value="local" color="primary"></v-radio>
+                <v-radio
+                  label="Global"
+                  value="global"
+                  color="primary"
+                ></v-radio>
+              </v-radio-group>
+            </v-col>
+          </v-row>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn variant="tonal" class="text-none" color="primary"
+            >Confirm</v-btn
+          >
+          <v-btn
+            variant="tonal"
+            class="text-none"
+            color="error"
+            @click="cancelCopy"
+            >Cancel</v-btn
+          >
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog v-model="status.warning" max-width="600" persistent>
+      <v-card title="Warring" :text="status.warning_message">
+        <template v-slot:actions>
+          <v-btn class="ms-auto" @click="status.warning = false">OK</v-btn>
+        </template></v-card
+      >
+    </v-dialog>
+  </v-container>
 </template>
 
 <script lang="ts">

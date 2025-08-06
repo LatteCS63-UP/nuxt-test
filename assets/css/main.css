@@ -1,1 +1,55 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "Prompt";
+  src: url("./fonts/Prompt/Prompt-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Prompt";
+  src: url("./fonts/Prompt/Prompt-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Prompt";
+  src: url("./fonts/Prompt/Prompt-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Prompt";
+  src: url("./fonts/Prompt/Prompt-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+html {
+  font-family: "Prompt", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+::-webkit-scrollbar {
+  height: 15px;
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bfc1c2;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #b9b9b9;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ececec;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #646464;
+  cursor: pointer;
+  transition: 0.3s;
+}
+/* .v-input__control {
+  height: 37.59px;
+} */

@@ -1,0 +1,204 @@
+html {
+  .bg-success {
+    color: white !important;
+  }
+
+  .bg-primary {
+    color: $white !important;
+  }
+
+  .bg-secondary {
+    color: $white !important;
+  }
+
+  .bg-warning {
+    color: $white !important;
+  }
+}
+.border,
+.v-divider {
+  border-color: rgba(var(--v-border-color), 1) !important;
+}
+
+.v-input--density-default .v-field--variant-outlined,
+.v-input--density-default .v-field--single-line,
+.v-input--density-default .v-field--no-label {
+  --v-field-padding-bottom: 5px !important;
+  --v-field-padding-top: 5px !important;
+}
+.v-input--density-default,
+.v-field--variant-solo,
+.v-field--variant-filled {
+  --v-input-control-height: 14px !important;
+  --v-input-padding-top: 8px !important;
+}
+
+.v-text-field input.v-field__input {
+  // min-height: 2.35rem !important;
+  padding: 5px !important;
+  // padding-top: 5px !important;
+  // padding-bottom: 5px !important;
+  // padding-left: 5px !important;
+  border: 1px solid rgba(var(--v-border-color)) !important;
+}
+
+.modal {
+  height: fit-content !important;
+}
+
+// Override Kendo Style
+.k-input-md,
+.k-picker-md {
+  font-size: 14px;
+  line-height: 2 !important;
+}
+.k-daterange-picker .k-dateinput,
+.k-daterangepicker .k-dateinput {
+  width: 12.5em !important;
+}
+.k-window {
+  border-radius: 4px !important;
+}
+.k-calendar .k-range-start,
+.k-calendar .k-range-end,
+.k-calendar .k-range-mid {
+  background-color: #eaf3ff !important;
+  color: rgb(var(--v-theme-info)) !important;
+}
+
+.k-calendar .k-calendar-view .k-today {
+  color: rgb(var(--v-theme-info)) !important;
+}
+
+.k-calendar .k-calendar-td.k-selected .k-calendar-cell-inner,
+.k-calendar .k-calendar-td.k-selected .k-link {
+  border-color: rgba(0, 0, 0, 0.08);
+  color: white;
+  background-color: rgb(var(--v-theme-info)) !important;
+}
+
+.k-calendar .k-calendar-td.k-selected:hover .k-calendar-cell-inner,
+.k-calendar .k-calendar-td.k-selected:hover .k-link,
+.k-calendar .k-calendar-td.k-selected.k-hover .k-calendar-cell-inner,
+.k-calendar .k-calendar-td.k-selected.k-hover .k-link {
+  color: white;
+  background-color: rgb(var(--v-theme-info)) !important;
+}
+.k-calendar .k-calendar-navigation li:hover,
+.k-calendar .k-calendar-navigation li.k-hover {
+  color: rgb(var(--v-theme-info)) !important;
+}
+
+.k-calendar .k-range-start .k-calendar-cell-inner,
+.k-calendar .k-range-start .k-link,
+.k-calendar .k-range-end .k-calendar-cell-inner,
+.k-calendar .k-range-end .k-link {
+  background-color: rgb(var(--v-theme-info)) !important;
+}
+.k-grid .k-table-thead,
+.k-grid .k-table-tbody,
+.k-grid .k-table-tfoot,
+.k-grid .k-grid-header {
+  font-size: 12px !important;
+}
+
+.k-grid .k-grid-norecords {
+  width: 100%;
+  text-align: left;
+}
+
+.k-grid .k-grid-norecords > div > div {
+  display: table-cell;
+  width: 33.33%;
+}
+
+.k-dialog-wrapper .k-dialog {
+  min-width: 25% !important;
+}
+
+// Override vuetify css
+.v-label {
+  opacity: 1;
+  font-size: 12px !important;
+}
+.v-card.v-theme--PurpleTheme.v-card--density-default.v-card--variant-elevated.loading-page {
+  min-height: 80vh;
+  background: unset;
+  box-shadow: none;
+  align-items: center;
+  position: absolute;
+  justify-content: center;
+}
+
+.v-overlay__scrim {
+  pointer-events: auto;
+  background: rgb(var(--v-theme-on-surface));
+  border-radius: inherit;
+  bottom: 0;
+  left: 0;
+  opacity: 0.75 !important;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.v-expansion-panel--active > .v-expansion-panel-title {
+  min-height: 50px !important;
+}
+.text-12 {
+  font-size: 12px !important;
+}
+
+.v-field__input {
+  font-size: 14px !important;
+}
+.v-text-field input.v-field__input::placeholder {
+  text-align: left;
+}
+.v-input--density-default .v-field--no-label {
+  --v-field-padding-bottom: 0px !important;
+  --v-field-padding-top: 0px !important;
+}
+.v-input--readonly .v-field__input {
+  background: white !important;
+  padding-left: 0px !important;
+  font-size: 12px !important;
+}
+.v-input--readonly.v-field__input:focus,
+.v-input--readonly.v-field__input:active {
+  outline: none !important;
+}
+
+.border-lightsecondary {
+  border-width: thin !important;
+  border-style: solid !important;
+  border-color: rgba(var(--v-theme-lightsecondary), 1) !important;
+}
+.border-lightprimary {
+  border-width: thin !important;
+  border-style: solid !important;
+  border-color: rgba(var(--v-theme-lightprimary), 1) !important;
+}
+
+button.v-expansion-panel-title {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+@media (max-width: 425px) {
+  .otp-input {
+    width: 2.25rem !important;
+  }
+}
+.sub-container {
+  position: absolute;
+  top: 45%;
+  min-height: min-content;
+  height: 0;
+}
+
+// Override Date Range Picker
+.dp__input,
+.dp__input::placeholder {
+  font-size: 14px !important;
+}
