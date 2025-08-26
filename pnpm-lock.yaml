@@ -11,15 +11,84 @@ importers:
       '@mdi/font':
         specifier: ^7.4.47
         version: 7.4.47
+      '@pinia/nuxt':
+        specifier: ^0.11.0
+        version: 0.11.2(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
+      '@progress/kendo-data-query':
+        specifier: ^1.6.0
+        version: 1.7.1
+      '@progress/kendo-datasource-vue-wrapper':
+        specifier: ^2023.3.1010
+        version: 2023.3.1010(@progress/kendo-ui@2023.3.1114)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-drawing':
+        specifier: ^1.17.5
+        version: 1.21.2
+      '@progress/kendo-grid-vue-wrapper':
+        specifier: ^2023.3.1010
+        version: 2023.3.1010(@progress/kendo-ui@2023.3.1114)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-licensing':
+        specifier: ^1.3.1
+        version: 1.7.1
+      '@progress/kendo-svg-icons':
+        specifier: ^1.9.0
+        version: 1.9.0
+      '@progress/kendo-theme-default':
+        specifier: ^7.0.1
+        version: 7.2.1
+      '@progress/kendo-ui':
+        specifier: ^2023.3.1010
+        version: 2023.3.1114
+      '@progress/kendo-vue-animation':
+        specifier: ^3.12.0
+        version: 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-data-tools':
+        specifier: ^3.12.0
+        version: 3.14.2(yavlqk6m3oodk4jqbohkwc4wqi)
+      '@progress/kendo-vue-dateinputs':
+        specifier: ^3.12.0
+        version: 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-dialogs':
+        specifier: ^3.12.0
+        version: 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-dropdowns':
+        specifier: ^3.12.0
+        version: 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-inputs@3.14.2(@progress/kendo-drawing@1.21.2)(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-labels@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-treeview@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-excel-export':
+        specifier: ^3.14.2
+        version: 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-grid':
+        specifier: ^3.14.2
+        version: 3.14.2(wkr6p3xuw77ouognel4kph7mpa)
+      '@progress/kendo-vue-indicators':
+        specifier: ^3.12.0
+        version: 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-inputs':
+        specifier: ^3.12.0
+        version: 3.14.2(@progress/kendo-drawing@1.21.2)(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-intl':
+        specifier: ^3.12.0
+        version: 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-treeview':
+        specifier: ^3.12.0
+        version: 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-upload':
+        specifier: ^3.14.2
+        version: 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
       '@tailwindcss/vite':
         specifier: ^4.1.11
         version: 4.1.11(vite@7.0.5(@types/node@24.0.14)(jiti@2.4.2)(lightningcss@1.30.1)(sass@1.70.0)(terser@5.43.1)(yaml@2.8.0))
       nuxt:
         specifier: ^4.0.0
         version: 4.0.0(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.1)(@types/node@24.0.14)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(ioredis@5.6.1)(lightningcss@1.30.1)(magicast@0.3.5)(rollup@4.45.1)(sass@1.70.0)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@24.0.14)(jiti@2.4.2)(lightningcss@1.30.1)(sass@1.70.0)(terser@5.43.1)(yaml@2.8.0))(yaml@2.8.0)
+      pinia:
+        specifier: ^3.0.2
+        version: 3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))
+      pinia-plugin-persistedstate:
+        specifier: ^4.3.0
+        version: 4.5.0(@nuxt/kit@4.0.0(magicast@0.3.5))(@pinia/nuxt@0.11.2(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))))(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))
       sass:
         specifier: 1.70.0
         version: 1.70.0
@@ -45,6 +114,9 @@ importers:
         specifier: ^0.18.5
         version: 0.18.5
     devDependencies:
+      '@progress/kendo-dateinputs-vue-wrapper':
+        specifier: ^2023.2.718
+        version: 2023.3.1010(@progress/kendo-ui@2023.3.1114)(vue@3.5.17(typescript@5.8.3))
       vite-plugin-vuetify:
         specifier: ^2.1.1
         version: 2.1.1(vite@7.0.5(@types/node@24.0.14)(jiti@2.4.2)(lightningcss@1.30.1)(sass@1.70.0)(terser@5.43.1)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))(vuetify@3.9.2)
@@ -1012,6 +1084,11 @@ packages:
     resolution: {integrity: sha512-dfUnCxiN9H4ap84DvD2ubjw+3vUNpstxa0TneY/Paat8a3R4uQZDLSvWjmznAY/DoahqTHl9V46HF/Zs3F29pg==}
     engines: {node: '>= 10.0.0'}
 
+  '@pinia/nuxt@0.11.2':
+    resolution: {integrity: sha512-CgvSWpbktxxWBV7ModhAcsExsQZqpPq6vMYEe9DexmmY6959ev8ukL4iFhr/qov2Nb9cQAWd7niFDnaWkN+FHg==}
+    peerDependencies:
+      pinia: ^3.0.3
+
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
@@ -1030,6 +1107,233 @@ packages:
 
   '@poppinss/exception@1.2.2':
     resolution: {integrity: sha512-m7bpKCD4QMlFCjA/nKTs23fuvoVFoA83brRKmObCUNmi/9tVu8Ve3w4YQAnJu4q3Tjf5fr685HYIC/IA2zHRSg==}
+
+  '@progress/jszip-esm@1.0.4':
+    resolution: {integrity: sha512-A5i26JcTosFKeHCrklarNsByW3RUJd8osRq69eskZgIaq05weTCXdpztlFMwrHpgOGods1D0WFoSQcMNE0eI8Q==}
+
+  '@progress/kendo-base-components-vue-wrapper@2023.3.1010':
+    resolution: {integrity: sha512-9x/t9VgZhEsx8bzlUDFyby15/WRnvvAzeYDW9pVbF6CvrjCyR1WSx0Sevag4B4vFnXvqsx6+4wOa3Ie8zXGfxQ==}
+    peerDependencies:
+      '@progress/kendo-ui': ~2023.3.1010
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-common@1.0.2':
+    resolution: {integrity: sha512-PHxnquetSmtmXiF4dmlQiypzXaFLUEPK3VAOHxmnRDrLxaPrcZfaW9FOOiyur8hv4QmXlohISMwMElZS8Xi1Ag==}
+
+  '@progress/kendo-data-query@1.7.1':
+    resolution: {integrity: sha512-1ax6mNx1XVr5A8d9VhzuZprAq1il7oES+XwIGnLikCmkKnFk+jcBmGVksw4MKB+kcdGzQPd4RV4iO6G0kaknEA==}
+
+  '@progress/kendo-datasource-vue-wrapper@2023.3.1010':
+    resolution: {integrity: sha512-/yyZCe2eZNg9o5oqHW4F9fXV0YGJcBp7ffKL6oRSLzbGSewy2WyXeKSxKNpv+r9j8REmams1UG0neTG0aiPP6A==}
+    peerDependencies:
+      '@progress/kendo-ui': ~2023.3.1010
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-date-math@1.5.1':
+    resolution: {integrity: sha512-/PsYT6heUHpMOu5hKC9AcF4U4cRNFLSUAyVVAkFEm6w7OsqlCA7XQjVmnxL3+439qFPe0JZ1QEw3CwGAqn9njQ==}
+
+  '@progress/kendo-dateinputs-vue-wrapper@2023.3.1010':
+    resolution: {integrity: sha512-uK+wYWWb/QFQoAwDviNPQOkTSveq7UN7O8XUXX3VGQ2PlVvwJQ5zfuGzFhRTNsjt03kheFZW99gqakUXd5EBYw==}
+    peerDependencies:
+      '@progress/kendo-ui': ~2023.3.1010
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-draggable@3.1.0':
+    resolution: {integrity: sha512-S5AHF9uiy44um+06ABJcjZn/wpO3ZwLahd2BhiTd7NeBVPt5lkj2bjdmkd88GEIIBKmT7FOK308WUt5/MmKVTQ==}
+
+  '@progress/kendo-drawing@1.21.2':
+    resolution: {integrity: sha512-1U/0EpVRk71nOMHQVYjdNbUwuZAaTT46xY6PPrtMATPPywIenJuK+NlRQFIdcbyY7/WplHJxLdIrmOVpKJvkcw==}
+
+  '@progress/kendo-file-saver@1.1.2':
+    resolution: {integrity: sha512-hWpJ67L8b2+GIhsIWR09NgGaEh87jvcHv7kScC671cbVWJycXTGqdy3ZoI0pzIaH8K0IgP2TNkF1ay4HGxe+pg==}
+
+  '@progress/kendo-grid-vue-wrapper@2023.3.1010':
+    resolution: {integrity: sha512-ordn5vFTaAJvs745BGeaOUgltWqT+I80pl3bD9kllxUjVddsvf7Wna+VnPrEjZiQ9IcdowlutIfX88iazQ9k0g==}
+    peerDependencies:
+      '@progress/kendo-ui': ~2023.3.1010
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-inputs-common@3.1.2':
+    resolution: {integrity: sha512-iCYz0yuDeR/YS+mW5tY7UkWEsf5EjdTKLpx8O5VJAFFcd2dxLCK/HAihSHS+KpWqIZIw4EIWeR6lzGQf0nN0nA==}
+    engines: {node: '>=20.0.0', npm: '>=10.0.0'}
+    peerDependencies:
+      '@progress/kendo-drawing': ^1.21.2
+
+  '@progress/kendo-intl@3.1.2':
+    resolution: {integrity: sha512-rOtMppQSrScwryMfeQSOdsnRi9Oj1l08HFoEC2ticZ0T2N0/JN9CHt+fuToRx5onXK7QkcbbuNM0D09o8TeeMw==}
+
+  '@progress/kendo-licensing@1.7.1':
+    resolution: {integrity: sha512-7uYrYjd++/4SVYrjoywT88EbG4pnpkAnYWRpshToVwsSDoprwurtW1Jo6Pzz0kwCIbQYBinY5PDroSdrE0tgVQ==}
+    hasBin: true
+
+  '@progress/kendo-ooxml@1.9.3':
+    resolution: {integrity: sha512-RUrn3k6IiWteD79vaRTkbRWhYKiHr0QzBswmuEnNBj0UySVjJ5ScPOytpRYcwkKE4sUq1JnclmoGaWpjX/o6og==}
+    engines: {node: '>=20.0.0', npm: '>=10.0.0'}
+
+  '@progress/kendo-popup-common@1.9.2':
+    resolution: {integrity: sha512-Gs50UafJcERiGuSP/47Yg7ftPX3HQXiK5M9zHB8sHSoc1/AEYd0/Sj5wh8UrVVBAM9b0pUTwmEuzQ/D5yDDd2Q==}
+
+  '@progress/kendo-svg-icons@1.9.0':
+    resolution: {integrity: sha512-Hgf52EPLx0wfSpo3h9WXqEHBlcYUGi9iIjuIrcKfBCKaNax/d3StcjrXruj2CX3F66CisqWrgUJAmMc22KNinw==}
+
+  '@progress/kendo-svg-icons@2.1.0':
+    resolution: {integrity: sha512-zAwxw8lt5xlIBMoE3uwUX2Z2RI5njWViYxdFoinvr5d8WJ6kU3sghNONsRelM9GiDd2vbSg0IkEN8dOrBvFjPg==}
+
+  '@progress/kendo-theme-core@7.2.1':
+    resolution: {integrity: sha512-fv6ELPjmQWw5p7ksv96RIiSWMQKenXdkK6b96vSakoQcexR/4oKDgbEXnApxeLgTUimh8Hp8M+6JIoZm+EQhyA==}
+
+  '@progress/kendo-theme-default@7.2.1':
+    resolution: {integrity: sha512-WUMg+GZKpP37WL0aeGRi3i8vNmfEJdb5nHVBWAZeuEi/AS8cycVOCwcdDK4NywK9bUI/I0eUvLToxydLOHv6Pg==}
+
+  '@progress/kendo-theme-utils@7.2.1':
+    resolution: {integrity: sha512-2IzRoBkjb2yolzJoQBZcsccmHT5a6GDw52O/PBXZHsxc5Cir7ej9CjP3tO2O4rWRg+8GfNEzB5XpwUb54lLF0Q==}
+
+  '@progress/kendo-ui@2023.3.1114':
+    resolution: {integrity: sha512-zgIQw/w/P7A5tePo0slOXag1ym4EfaU4d5xgv1rKMKdtqtlordh8+197/hfVWb+8rstG6kv/R2hXiIOuR5XVnA==}
+
+  '@progress/kendo-vue-animation@3.14.2':
+    resolution: {integrity: sha512-/NFCB1efWamfYKfZyEMw0OfUWIMC6aU6n4GqMyZsfrzgkRkevkKvsynEQaOQM3ZJgps8m+bpbXDHRe9KivQGDg==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-buttons@3.14.2':
+    resolution: {integrity: sha512-6hr9sHoLcebDx05FQSL8y8g8e+pY3Ad/GnX8KhxcykmiJXrDinr+rGMrQMMzQFoZLqLjJupJi/LBRXMqmwdpWQ==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-svg-icons': ^1.0.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-common@3.14.2':
+    resolution: {integrity: sha512-8Rg2zqFVN8y9Jqt5IEXd6uF+JKt2y3vc7eU9jqh3+UjTyIrr0FoqljOGcHjQY8el3vvftYzKe04ms7YWq773rg==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-data-tools@3.14.2':
+    resolution: {integrity: sha512-TGqYcY8uZ2kKvBrJilUcDZQekN6PcIlztl0ZHET1x97z24Ad4U+mdsFShYMJYQCZR7TA2xkFyE8twAmsyFYqxQ==}
+    peerDependencies:
+      '@progress/kendo-data-query': ^1.5.4
+      '@progress/kendo-drawing': ^1.9.3
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-svg-icons': ^1.0.0
+      '@progress/kendo-vue-animation': ^3.12.0
+      '@progress/kendo-vue-buttons': ^3.10.0
+      '@progress/kendo-vue-dateinputs': ^3.10.0
+      '@progress/kendo-vue-dropdowns': ^3.10.0
+      '@progress/kendo-vue-inputs': ^3.10.0
+      '@progress/kendo-vue-intl': ^3.10.0
+      '@progress/kendo-vue-popup': ^3.10.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-dateinputs@3.14.2':
+    resolution: {integrity: sha512-cAwXlFzn+WNJv5LbW2Uq9NoVmegM15Y59Uj3v3r1AOv0dllRNqdf8znU29R0vvbFJzFYx6CftHLteaKId7DxMA==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-svg-icons': ^1.0.0
+      '@progress/kendo-vue-intl': ^3.10.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-dialogs@3.14.2':
+    resolution: {integrity: sha512-YwWq0eUBryI4nRrBkhzAHV3fx6NURWOobA+52SKCWAlcBeCozVpiT1DD6RMvk25CYaxixnmEezI4kZsJsgEjeg==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-svg-icons': ^1.0.0
+      '@progress/kendo-vue-intl': ^3.10.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-dropdowns@3.14.2':
+    resolution: {integrity: sha512-lZolhLJBoWCoJIHU/i6AXkJMBrwqAvHVaFvzKJTjUlu8i4G4BsYVSHUgHytE36ESfT5X78fYHHe736Go2vJP3w==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-svg-icons': ^1.0.0
+      '@progress/kendo-vue-inputs': ^3.10.0
+      '@progress/kendo-vue-intl': ^3.10.0
+      '@progress/kendo-vue-labels': ^3.10.0
+      '@progress/kendo-vue-treeview': ^3.10.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-excel-export@3.14.2':
+    resolution: {integrity: sha512-B1LXmTL2ITUJ2GNm7+3V1YHf6ACx3JPn6413f2v4WXXKtmJsaiyMoVxpmJo/wDad9ZmCux23IMRg6trAmi6Vew==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-grid@3.14.2':
+    resolution: {integrity: sha512-rYU49qi3fgl+v7ZVsj7FvZgFg2X8MgwS5vSgVXnrtDIgG6/zYYamvoCSLrGKrw2Wsd6O6W91EmF7EZFzd/BjlA==}
+    peerDependencies:
+      '@progress/kendo-data-query': ^1.5.4
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-svg-icons': ^1.0.0
+      '@progress/kendo-vue-animation': ^3.10.0
+      '@progress/kendo-vue-buttons': ^3.10.0
+      '@progress/kendo-vue-data-tools': ^3.10.0
+      '@progress/kendo-vue-dateinputs': ^3.10.0
+      '@progress/kendo-vue-dropdowns': ^3.10.0
+      '@progress/kendo-vue-indicators': ^3.10.0
+      '@progress/kendo-vue-inputs': ^3.10.0
+      '@progress/kendo-vue-intl': ^3.10.0
+      '@progress/kendo-vue-popup': ^3.10.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-indicators@3.14.2':
+    resolution: {integrity: sha512-IY+roFjHY8nLvz2Lx26KF+aL4etZ8KXisMxWU+Jo/WBnpzFdZePagftYrO4jKnZH0QeB001OQWUGUlYeXhCgyQ==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-inputs@3.14.2':
+    resolution: {integrity: sha512-/wqCyk1XM6pl9egHBt5iR9hEhb7Vz/wOmwnuNE0aOB/bisqg2DXZpnC+cA6NcZRg8JGRvyMBvlO3FjxWDfX9UA==}
+    peerDependencies:
+      '@progress/kendo-drawing': ^1.8.0
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-svg-icons': ^1.0.0
+      '@progress/kendo-vue-intl': ^3.10.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-intl@3.14.2':
+    resolution: {integrity: sha512-Rh5jGeIjoa2GDvj2Tt2T581ZD6PaNrvrsb0FuLZFGkBen/f/WGdFma3fYhvkcDOZxrs5JTZhHY1kU4mVVYtTpw==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-labels@3.14.2':
+    resolution: {integrity: sha512-3YWgShtUgKtHsoM5UNheYZ3cz3/xz27Yaw6gyxIRbpN7rtxMDQuqXFbCg2JUSAcFFymL6v4Ywvhy5RwdEJewZQ==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-vue-intl': ^3.10.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-popup@3.14.2':
+    resolution: {integrity: sha512-2hwkXXltfMHzq0AW2mC1sudB/4yNFq6TUz2b5ima57yG7b0TqqSfeDjH+j8b6IKT7BTGoT8sn4miocXqjYy/tg==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-progressbars@3.14.2':
+    resolution: {integrity: sha512-bmI49ASQBIyGbRMvw+2s+FNoLXMeptCkmssItUngIVJj0s7yl3ouH0a7N4dlMeiu779zI9BWsQlB7gDbsKzvKQ==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-vue-animation': ^3.10.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-treeview@3.14.2':
+    resolution: {integrity: sha512-ZX8Mqe0dg4GGsNzjZP2EJcwWqaLghcdU+gLWb949LaDJeihBf3xxVgcD0GehRUt7jTtex5ALH5669JWM7IcHgQ==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-svg-icons': ^1.0.0
+      '@progress/kendo-vue-animation': ^3.10.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/kendo-vue-upload@3.14.2':
+    resolution: {integrity: sha512-EF+cW6u7UYN0N1qgOdnLIgoRNYnmvl2E3R43B/pZQxZvobThnIzu4vW0vpx1oPVtM1XMKP7p65lrLSmYmm3b2A==}
+    peerDependencies:
+      '@progress/kendo-licensing': ^1.3.0
+      '@progress/kendo-svg-icons': ^1.0.0
+      vue: ^2.6.12 || ^3.0.2
+
+  '@progress/pako-esm@1.0.1':
+    resolution: {integrity: sha512-O4A3b1EuE9Xe1pC3Xz9Tcn1M/CYrL71f4y/5TXeytOVTkmkzBgYW97fYP2f+54H0e0erWRaqV/kUUB/a8Uxfbw==}
 
   '@rolldown/pluginutils@1.0.0-beta.19':
     resolution: {integrity: sha512-3FL3mnMbPu0muGOCaKAhhFEYmqv9eTfPSJRJmANrCwtgK8VuxpsZDGK+m0LYAGoyO8+0j5uRe4PeyPDK1yA/hA==}
@@ -1434,6 +1738,9 @@ packages:
   '@vue/devtools-api@6.6.4':
     resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
 
+  '@vue/devtools-api@7.7.7':
+    resolution: {integrity: sha512-lwOnNBH2e7x1fIIbVT7yF5D+YWhqELm55/4ZKf45R9T8r9dE2AIOy8HKjfqzGsoTHFbWbr337O4E0A0QADnjBg==}
+
   '@vue/devtools-core@7.7.7':
     resolution: {integrity: sha512-9z9TLbfC+AjAi1PQyWX+OErjIaJmdFlbDHcD+cAMYKY6Bh5VlsAtCeGyRMrXwIlMEQPukvnWt3gZBLwTAIMKzQ==}
     peerDependencies:
@@ -1601,6 +1908,9 @@ packages:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
 
+  axios@0.24.0:
+    resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
+
   b4a@1.6.7:
     resolution: {integrity: sha512-OnAYlL5b7LEkALw87fUVafQw5rVR9RjwGd4KUwNQ6DrrNmaVaUCgLipfVlzrPQ4tWOR9P0IXGNOx50jYCCdSJg==}
 
@@ -1644,6 +1954,9 @@ packages:
   buffer-crc32@1.0.0:
     resolution: {integrity: sha512-Db1SbgBS/fg/392AblrMJk97KggmvYhr4pB5ZIMTWtaivCPMWLkmb7m21cJvpvgK+J3nsU2CmmixNBZx4vFj/w==}
     engines: {node: '>=8.0.0'}
+
+  buffer-equal-constant-time@1.0.1:
+    resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
 
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
@@ -2026,6 +2339,9 @@ packages:
   decache@4.6.2:
     resolution: {integrity: sha512-2LPqkLeu8XWHU8qNCS3kcF6sCcb5zIzvWaAHYSvPfwhdd7mHuah29NssMzrTYyHN4F5oFy2ko9OBYxegtU0FEw==}
 
+  deep-pick-omit@1.2.1:
+    resolution: {integrity: sha512-2J6Kc/m3irCeqVG42T+SaUMesaK7oGWaedGnQQK/+O0gYc+2SP5bKh/KKTE7d7SJ+GCA9UUE1GRzh6oDe0EnGw==}
+
   deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
@@ -2170,6 +2486,9 @@ packages:
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+
+  ecdsa-sig-formatter@1.0.11:
+    resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
 
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -2376,6 +2695,15 @@ packages:
 
   fn.name@1.1.0:
     resolution: {integrity: sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==}
+
+  follow-redirects@1.15.11:
+    resolution: {integrity: sha512-deG2P0JfjrTxl50XGCDyfI97ZGVCxIpfKYmfyrQ54n5FO/0gfIES8C/Psl6kWVDolizcaaxZJnTS0QSMxvnsBQ==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
 
   for-each@0.3.5:
     resolution: {integrity: sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg==}
@@ -2845,6 +3173,9 @@ packages:
     resolution: {integrity: sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==}
     hasBin: true
 
+  jquery@3.7.1:
+    resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
+
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -2868,9 +3199,19 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
+  jsonwebtoken@9.0.2:
+    resolution: {integrity: sha512-PRp66vJ865SSqOlgqS8hujT5U4AOgMfhrwYIuIhfKaoSCZcirrmASQr8CX7cUg+RMih+hgznrjp99o+W4pJLHQ==}
+    engines: {node: '>=12', npm: '>=6'}
+
   junk@4.0.1:
     resolution: {integrity: sha512-Qush0uP+G8ZScpGMZvHUiRfI0YBWuB3gVBYlI0v0vvOJt5FLicco+IkP0a50LqTTQhmts/m6tP5SWE+USyIvcQ==}
     engines: {node: '>=12.20'}
+
+  jwa@1.4.2:
+    resolution: {integrity: sha512-eeH5JO+21J78qMvTIDdBXidBd6nG2kZjg5Ohz/1fpa28Z4CcsWUzJ1ZZyFq/3z3N17aZy+ZuBoHljASbL1WfOw==}
+
+  jws@3.2.2:
+    resolution: {integrity: sha512-YHlZCB6lMTllWDtSPHz/ZXTsi8S00usEV6v1tjq8tOUZzw7DpSDWVXjXDre6ed1w/pd495ODpHZYSdkRTsa0HA==}
 
   jwt-decode@4.0.0:
     resolution: {integrity: sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==}
@@ -2995,11 +3336,32 @@ packages:
   lodash.defaults@4.2.0:
     resolution: {integrity: sha512-qjxPLHd3r5DnsdGacqOMU6pb/avJzdh9tFX2ymgoZE27BmjXrNy/y4LoaiTeAb+O3gL8AfpJGtqfX/ae2leYYQ==}
 
+  lodash.includes@4.3.0:
+    resolution: {integrity: sha512-W3Bx6mdkRTGtlJISOvVD/lbqjTlPPUDTMnlXZFnVwi9NKJ6tiAk6LVdlhZMm17VZisqhKcgzpO5Wz91PCt5b0w==}
+
   lodash.isarguments@3.1.0:
     resolution: {integrity: sha512-chi4NHZlZqZD18a0imDHnZPrDeBbTtVN7GXMwuGdRH9qotxAjYs3aVLKc7zNOG9eddR5Ksd8rvFEBc9SsggPpg==}
 
+  lodash.isboolean@3.0.3:
+    resolution: {integrity: sha512-Bz5mupy2SVbPHURB98VAcw+aHh4vRV5IPNhILUCsOzRmsTmSQ17jIuqopAentWoehktxGd9e/hbIXq980/1QJg==}
+
+  lodash.isinteger@4.0.4:
+    resolution: {integrity: sha512-DBwtEWN2caHQ9/imiNeEA5ys1JoRtRfY3d7V9wkqtbycnAmTvRRmbHKDV4a0EYc678/dia0jrte4tjYwVBaZUA==}
+
+  lodash.isnumber@3.0.3:
+    resolution: {integrity: sha512-QYqzpfwO3/CWf3XP+Z+tkQsfaLL/EnUlXWVkIk5FUPc4sBdTehEqZONuyRt2P67PXAk+NXmTBcc97zw9t1FQrw==}
+
+  lodash.isplainobject@4.0.6:
+    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
+
+  lodash.isstring@4.0.1:
+    resolution: {integrity: sha512-0wJxfxH1wgO3GrbuP+dTTk7op+6L41QCXbGINEmD+ny/G/eCqGzxyCsh7159S+mgDDcoarnBw6PC1PS5+wUGgw==}
+
   lodash.memoize@4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
+
+  lodash.once@4.1.1:
+    resolution: {integrity: sha512-Sb487aTOCr9drQVL8pIxOzVhafOjZN9UU54hiN8PU3uAiSV7lx1yYNpbNmex2PK6dSJoNTSJUUswT651yww3Mg==}
 
   lodash.uniq@4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
@@ -3446,6 +3808,29 @@ packages:
   pify@2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
+
+  pinia-plugin-persistedstate@4.5.0:
+    resolution: {integrity: sha512-QTkP1xJVyCdr2I2p3AKUZM84/e+IS+HktRxKGAIuDzkyaKKV48mQcYkJFVVDuvTxlI5j6X3oZObpqoVB8JnWpw==}
+    peerDependencies:
+      '@nuxt/kit': '>=3.0.0'
+      '@pinia/nuxt': '>=0.10.0'
+      pinia: '>=3.0.0'
+    peerDependenciesMeta:
+      '@nuxt/kit':
+        optional: true
+      '@pinia/nuxt':
+        optional: true
+      pinia:
+        optional: true
+
+  pinia@3.0.3:
+    resolution: {integrity: sha512-ttXO/InUULUXkMHpTdp9Fj4hLpD/2AoJdmAbAeW2yu1iy1k+pkFekQXw5VpC0/5p51IOR/jDaDRfRWRnMMsGOA==}
+    peerDependencies:
+      typescript: '>=4.4.4'
+      vue: ^2.7.0 || ^3.5.11
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   pkg-types@1.3.1:
     resolution: {integrity: sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ==}
@@ -4292,6 +4677,9 @@ packages:
     engines: {node: '>=18.12'}
     peerDependencies:
       typescript: '>=4.8.4'
+
+  tslib@1.14.1:
+    resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
@@ -5800,6 +6188,13 @@ snapshots:
       '@parcel/watcher-win32-ia32': 2.5.1
       '@parcel/watcher-win32-x64': 2.5.1
 
+  '@pinia/nuxt@0.11.2(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))':
+    dependencies:
+      '@nuxt/kit': 3.17.7(magicast@0.3.5)
+      pinia: 3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))
+    transitivePeerDependencies:
+      - magicast
+
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
@@ -5818,6 +6213,260 @@ snapshots:
       supports-color: 10.0.0
 
   '@poppinss/exception@1.2.2': {}
+
+  '@progress/jszip-esm@1.0.4':
+    dependencies:
+      '@progress/pako-esm': 1.0.1
+
+  '@progress/kendo-base-components-vue-wrapper@2023.3.1010(@progress/kendo-ui@2023.3.1114)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-ui': 2023.3.1114
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-common@1.0.2':
+    dependencies:
+      tslib: 1.14.1
+
+  '@progress/kendo-data-query@1.7.1':
+    dependencies:
+      tslib: 2.8.1
+
+  '@progress/kendo-datasource-vue-wrapper@2023.3.1010(@progress/kendo-ui@2023.3.1114)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-base-components-vue-wrapper': 2023.3.1010(@progress/kendo-ui@2023.3.1114)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-ui': 2023.3.1114
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-date-math@1.5.1':
+    dependencies:
+      tslib: 1.14.1
+
+  '@progress/kendo-dateinputs-vue-wrapper@2023.3.1010(@progress/kendo-ui@2023.3.1114)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-base-components-vue-wrapper': 2023.3.1010(@progress/kendo-ui@2023.3.1114)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-ui': 2023.3.1114
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-draggable@3.1.0': {}
+
+  '@progress/kendo-drawing@1.21.2':
+    dependencies:
+      '@progress/kendo-common': 1.0.2
+      '@progress/pako-esm': 1.0.1
+
+  '@progress/kendo-file-saver@1.1.2': {}
+
+  '@progress/kendo-grid-vue-wrapper@2023.3.1010(@progress/kendo-ui@2023.3.1114)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-base-components-vue-wrapper': 2023.3.1010(@progress/kendo-ui@2023.3.1114)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-ui': 2023.3.1114
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-inputs-common@3.1.2(@progress/kendo-drawing@1.21.2)':
+    dependencies:
+      '@progress/kendo-drawing': 1.21.2
+      tslib: 2.8.1
+
+  '@progress/kendo-intl@3.1.2': {}
+
+  '@progress/kendo-licensing@1.7.1':
+    dependencies:
+      glob: 10.4.5
+      jsonwebtoken: 9.0.2
+
+  '@progress/kendo-ooxml@1.9.3':
+    dependencies:
+      '@progress/jszip-esm': 1.0.4
+      '@progress/pako-esm': 1.0.1
+
+  '@progress/kendo-popup-common@1.9.2': {}
+
+  '@progress/kendo-svg-icons@1.9.0': {}
+
+  '@progress/kendo-svg-icons@2.1.0': {}
+
+  '@progress/kendo-theme-core@7.2.1': {}
+
+  '@progress/kendo-theme-default@7.2.1':
+    dependencies:
+      '@progress/kendo-svg-icons': 2.1.0
+      '@progress/kendo-theme-core': 7.2.1
+      '@progress/kendo-theme-utils': 7.2.1
+
+  '@progress/kendo-theme-utils@7.2.1':
+    dependencies:
+      '@progress/kendo-theme-core': 7.2.1
+
+  '@progress/kendo-ui@2023.3.1114':
+    dependencies:
+      jquery: 3.7.1
+
+  '@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-buttons@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-svg-icons': 1.9.0
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-popup': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-common@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-draggable': 3.1.0
+      '@progress/kendo-licensing': 1.7.1
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-data-tools@3.14.2(yavlqk6m3oodk4jqbohkwc4wqi)':
+    dependencies:
+      '@progress/kendo-data-query': 1.7.1
+      '@progress/kendo-drawing': 1.21.2
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-svg-icons': 1.9.0
+      '@progress/kendo-vue-animation': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-buttons': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-dateinputs': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-dropdowns': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-inputs@3.14.2(@progress/kendo-drawing@1.21.2)(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-labels@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-treeview@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-inputs': 3.14.2(@progress/kendo-drawing@1.21.2)(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-intl': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-popup': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-dateinputs@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-date-math': 1.5.1
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-svg-icons': 1.9.0
+      '@progress/kendo-vue-buttons': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-intl': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-labels': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-popup': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-dialogs@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-svg-icons': 1.9.0
+      '@progress/kendo-vue-buttons': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-intl': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-dropdowns@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-inputs@3.14.2(@progress/kendo-drawing@1.21.2)(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-labels@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-treeview@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-svg-icons': 1.9.0
+      '@progress/kendo-vue-buttons': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-inputs': 3.14.2(@progress/kendo-drawing@1.21.2)(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-intl': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-labels': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-popup': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-treeview': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-excel-export@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-file-saver': 1.1.2
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-ooxml': 1.9.3
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-grid@3.14.2(wkr6p3xuw77ouognel4kph7mpa)':
+    dependencies:
+      '@progress/kendo-data-query': 1.7.1
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-svg-icons': 1.9.0
+      '@progress/kendo-vue-animation': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-buttons': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-data-tools': 3.14.2(yavlqk6m3oodk4jqbohkwc4wqi)
+      '@progress/kendo-vue-dateinputs': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-dropdowns': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-inputs@3.14.2(@progress/kendo-drawing@1.21.2)(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-labels@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(@progress/kendo-vue-treeview@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-indicators': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-inputs': 3.14.2(@progress/kendo-drawing@1.21.2)(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-intl': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-popup': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-indicators@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-inputs@3.14.2(@progress/kendo-drawing@1.21.2)(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-drawing': 1.21.2
+      '@progress/kendo-inputs-common': 3.1.2(@progress/kendo-drawing@1.21.2)
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-svg-icons': 1.9.0
+      '@progress/kendo-vue-buttons': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-dialogs': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-intl': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-labels': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-popup': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-intl': 3.1.2
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-labels@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-vue-intl@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-intl': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-popup@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-popup-common': 1.9.2
+      '@progress/kendo-vue-animation': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-progressbars@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-vue-animation': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-treeview@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-svg-icons': 1.9.0
+      '@progress/kendo-vue-animation': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@progress/kendo-vue-upload@3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@progress/kendo-licensing': 1.7.1
+      '@progress/kendo-svg-icons': 1.9.0
+      '@progress/kendo-vue-buttons': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-svg-icons@1.9.0)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-common': 3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3))
+      '@progress/kendo-vue-progressbars': 3.14.2(@progress/kendo-licensing@1.7.1)(@progress/kendo-vue-animation@3.14.2(@progress/kendo-licensing@1.7.1)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      axios: 0.24.0
+      vue: 3.5.17(typescript@5.8.3)
+    transitivePeerDependencies:
+      - '@progress/kendo-vue-animation'
+      - debug
+
+  '@progress/pako-esm@1.0.1': {}
 
   '@rolldown/pluginutils@1.0.0-beta.19': {}
 
@@ -6205,6 +6854,10 @@ snapshots:
 
   '@vue/devtools-api@6.6.4': {}
 
+  '@vue/devtools-api@7.7.7':
+    dependencies:
+      '@vue/devtools-kit': 7.7.7
+
   '@vue/devtools-core@7.7.7(vite@7.0.5(@types/node@24.0.14)(jiti@2.4.2)(lightningcss@1.30.1)(sass@1.70.0)(terser@5.43.1)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@vue/devtools-kit': 7.7.7
@@ -6410,6 +7063,12 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.1.0
 
+  axios@0.24.0:
+    dependencies:
+      follow-redirects: 1.15.11
+    transitivePeerDependencies:
+      - debug
+
   b4a@1.6.7: {}
 
   balanced-match@1.0.2: {}
@@ -6447,6 +7106,8 @@ snapshots:
   buffer-crc32@0.2.13: {}
 
   buffer-crc32@1.0.0: {}
+
+  buffer-equal-constant-time@1.0.1: {}
 
   buffer-from@1.1.2: {}
 
@@ -6875,6 +7536,8 @@ snapshots:
     dependencies:
       callsite: 1.0.0
 
+  deep-pick-omit@1.2.1: {}
+
   deepmerge@4.3.1: {}
 
   default-browser-id@5.0.0: {}
@@ -7021,6 +7684,10 @@ snapshots:
   duplexer@0.1.2: {}
 
   eastasianwidth@0.2.0: {}
+
+  ecdsa-sig-formatter@1.0.11:
+    dependencies:
+      safe-buffer: 5.2.1
 
   ee-first@1.1.1: {}
 
@@ -7304,6 +7971,8 @@ snapshots:
       unicorn-magic: 0.1.0
 
   fn.name@1.1.0: {}
+
+  follow-redirects@1.15.11: {}
 
   for-each@0.3.5:
     dependencies:
@@ -7771,6 +8440,8 @@ snapshots:
 
   jiti@2.4.2: {}
 
+  jquery@3.7.1: {}
+
   js-tokens@4.0.0: {}
 
   js-tokens@9.0.1: {}
@@ -7786,7 +8457,31 @@ snapshots:
 
   json5@2.2.3: {}
 
+  jsonwebtoken@9.0.2:
+    dependencies:
+      jws: 3.2.2
+      lodash.includes: 4.3.0
+      lodash.isboolean: 3.0.3
+      lodash.isinteger: 4.0.4
+      lodash.isnumber: 3.0.3
+      lodash.isplainobject: 4.0.6
+      lodash.isstring: 4.0.1
+      lodash.once: 4.1.1
+      ms: 2.1.3
+      semver: 7.7.2
+
   junk@4.0.1: {}
+
+  jwa@1.4.2:
+    dependencies:
+      buffer-equal-constant-time: 1.0.1
+      ecdsa-sig-formatter: 1.0.11
+      safe-buffer: 5.2.1
+
+  jws@3.2.2:
+    dependencies:
+      jwa: 1.4.2
+      safe-buffer: 5.2.1
 
   jwt-decode@4.0.0: {}
 
@@ -7899,9 +8594,23 @@ snapshots:
 
   lodash.defaults@4.2.0: {}
 
+  lodash.includes@4.3.0: {}
+
   lodash.isarguments@3.1.0: {}
 
+  lodash.isboolean@3.0.3: {}
+
+  lodash.isinteger@4.0.4: {}
+
+  lodash.isnumber@3.0.3: {}
+
+  lodash.isplainobject@4.0.6: {}
+
+  lodash.isstring@4.0.1: {}
+
   lodash.memoize@4.1.2: {}
+
+  lodash.once@4.1.1: {}
 
   lodash.uniq@4.5.0: {}
 
@@ -8557,6 +9266,23 @@ snapshots:
   picomatch@4.0.3: {}
 
   pify@2.3.0: {}
+
+  pinia-plugin-persistedstate@4.5.0(@nuxt/kit@4.0.0(magicast@0.3.5))(@pinia/nuxt@0.11.2(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))))(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))):
+    dependencies:
+      deep-pick-omit: 1.2.1
+      defu: 6.1.4
+      destr: 2.0.5
+    optionalDependencies:
+      '@nuxt/kit': 4.0.0(magicast@0.3.5)
+      '@pinia/nuxt': 0.11.2(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))
+      pinia: 3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))
+
+  pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)):
+    dependencies:
+      '@vue/devtools-api': 7.7.7
+      vue: 3.5.17(typescript@5.8.3)
+    optionalDependencies:
+      typescript: 5.8.3
 
   pkg-types@1.3.1:
     dependencies:
@@ -9541,6 +10267,8 @@ snapshots:
   ts-api-utils@2.1.0(typescript@5.8.3):
     dependencies:
       typescript: 5.8.3
+
+  tslib@1.14.1: {}
 
   tslib@2.8.1: {}
 
