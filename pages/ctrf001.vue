@@ -101,17 +101,17 @@
               :key="item.year"
               :attributes="rangeAttributes"
               :disabled-dates="disabledDates"
+              @dayclick="handleDayClick"
               :is-range="false"
             />
-            <!-- @dayclick="handleDayClick" -->
           </div>
         </v-col>
         <v-col cols="12" xl="6">
-          <div>
-            <div class="flex flex-col gap-y-2">
+          <div class="flex justify-center">
+            <div class="flex flex-col gap-y-2 w-[752px]">
               <v-table
                 fixed-header
-                class="max-h-[318px] max-w-[752px]"
+                class="max-h-[318px]"
                 :class="holidayDate.length > 0 ? '!rounded-md' : ''"
               >
                 <thead>
@@ -122,8 +122,7 @@
                       Date<span class="font-medium"> (YYYY/MM/DD)</span>
                     </th>
                     <th
-                      class="font-weight-bold bg-primary !h-[35px]"
-                      :class="status.confirm ? 'text-center' : 'text-left'"
+                      class="font-weight-bold bg-primary text-center !h-[35px]"
                     >
                       Can trade
                     </th>
@@ -131,7 +130,7 @@
                       Description
                     </th>
                     <th
-                      v-if="status.confirm"
+                      v-if="!status.confirm"
                       class="text-center font-weight-bold bg-primary !h-[35px]"
                     >
                       Action
@@ -150,7 +149,9 @@
                       class="border-b-md border-primary text-center"
                       :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
                     >
-                      <span v-if="status.confirm">{{ item.canTrade }}</span>
+                      <span v-if="status.confirm || item.type === 'query'">{{
+                        item.canTrade
+                      }}</span>
                       <v-select
                         v-else
                         v-model="item.canTrade"
@@ -164,7 +165,9 @@
                       class="border-b-md border-primary"
                       :class="status.confirm ? 'bg-[#FAFAFA]' : ''"
                     >
-                      <span v-if="status.confirm">{{ item.description }}</span>
+                      <span v-if="status.confirm || item.type === 'query'">{{
+                        item.description
+                      }}</span>
                       <v-text-field
                         v-else
                         v-model="item.description"
@@ -176,14 +179,15 @@
                       />
                     </td>
                     <td
-                      v-if="status.confirm"
+                      v-if="!status.confirm"
                       class="border-b-md border-primary text-center bg-[#FAFAFA]"
                     >
                       <v-btn
+                        v-if="item.type === 'query'"
                         color="warning"
                         variant="outlined"
                         class="text-none"
-                        @click="status.confirm = false"
+                        @click="item.type = ''"
                         >Edit</v-btn
                       >
                     </td>
@@ -206,17 +210,17 @@
                   color="success"
                   variant="outlined"
                   class="text-none"
-                  @click="insertHoliday"
+                  @click="status.confirm = true"
                   >Confirm</v-btn
                 >
-                <!-- <v-btn
+                <v-btn
                   v-else
                   color="warning"
                   variant="outlined"
                   class="text-none"
                   @click="status.confirm = false"
                   >Edit</v-btn
-                > -->
+                >
                 <v-btn
                   v-if="!status.confirm"
                   color="error"
@@ -347,12 +351,21 @@
 </template>
 
 <script lang="ts">
+interface holidayRanges {
+  dot?: string;
+  query?: boolean;
+  dates: {
+    start: Date;
+    end: Date;
+  };
+}
 interface HolidayDes {
+  type?: string;
   date: Date;
   canTrade: string;
   description: string | null;
 }
-
+import holiday from "~/data/json/holidayQuery.json";
 import { DatePicker } from "v-calendar";
 import "v-calendar/style.css";
 import * as XLSX from "xlsx";
@@ -385,44 +398,31 @@ export default {
       //   { dot: 'gray', dates: { end: new Date() } },
       //   { content: 'blue', dates: { start: new Date() } },
       // ];
-      // return this.selectedRanges.map((item: any) => {
-      //   return {
-      //     dot: item.dot,
-      //     dates: {
-      //       start: item.dates.start,
-      //       end: item.dates.end,
-      //     },
-      //   };
-      // });
-      return this.selectedRanges;
+      return this.selectedRanges.map((range) => ({
+        dot: range.dot,
+        dates: {
+          start: range.dates.start,
+          end: range.dates.end,
+        },
+      }));
+      // return {
+      //   dot: item.dot,
+      //   dates: {
+      //     start: item.dates.start,
+      //     end: item.dates.end,
+      //   },
+      // };
+      // return this.selectedRanges;
     },
-    // rangeAttributes2() {
-    //   return [
-    //     {
-    //       dot: 'red',
-    //       dates: [{ start: new Date() }],
-    //     },
-    //   ];
-    // },
   },
   data() {
     const now = new Date();
     const year = now.getFullYear();
 
     return {
+      dateNow: now,
       date: null as any | null,
-      selectedRanges: [] as {
-        highlight?: {
-          color: string;
-          filMode?: string;
-        };
-        dot?: string | boolean;
-        bar?: string | boolean;
-        dates: {
-          start?: Date;
-          end?: Date;
-        };
-      }[],
+      selectedRanges: [] as holidayRanges[],
       holidayDate: [] as HolidayDes[],
       tempRange: { start: null, end: null } as {
         start: Date | null;
@@ -465,183 +465,269 @@ export default {
     };
   },
   methods: {
-    async allSelectedDates() {
+    fetchHoliday() {
+      this.selectedRanges = holiday.lists.map((item) => ({
+        query: true,
+        dot: "green",
+        dates: {
+          start: new Date(item.holidaydate),
+          end: new Date(item.holidaydate),
+        },
+      }));
+
+      this.holidayDate = holiday.lists.map((item) => ({
+        type: "query",
+        date: new Date(item.holidaydate),
+        canTrade: item.cantrade || "N",
+        description: item.description || null,
+      }));
+
+      // this.allSelectedDates();
+    },
+    // async allSelectedDates() {
+    //   if (this.holidayDate.length !== 0) {
+    //     // this.holidayDate.forEach((day) => {
+    //     //   if (
+    //     //     !this.isRangeOverlapping(day.date, day.date, this.selectedRanges)
+    //     //   ) {
+    //     //     this.holidayDate = this.holidayDate.filter(
+    //     //       (item) => item.date !== day.date,
+    //     //     );
+    //     //   }
+    //     // });
+    //     // this.selectedRanges.forEach((range) => {
+    //     //   if (!range.query) {
+    //     //     const current = range.dates.start;
+    //     //     const end = range.dates.end;
+
+    //     //     if (current && end) {
+    //     //       while (current <= end) {
+    //     //         const date_same = this.holidayDate.some((day) => {
+    //     //           const date_main = current.toISOString().slice(0, 10);
+    //     //           const date_check = day.date.toISOString().slice(0, 10);
+    //     //           return date_main === date_check;
+    //     //         });
+    //     //         if (!date_same) {
+    //     //           this.holidayDate.push({
+    //     //             date: new Date(current),
+    //     //             canTrade: "N",
+    //     //             description: null,
+    //     //           });
+    //     //         }
+    //     //         current.setDate(current.getDate() + 1);
+    //     //       }
+    //     //     }
+    //     //   }
+    //     // });
+    //     //   // this.holidayDate.sort((day1, day2) => {
+    //     //   //   const monthDiff = day1.date.getMonth() - day2.date.getMonth();
+    //     //   //   if (monthDiff !== 0) return monthDiff;
+    //     //   //   return day1.date.getDate() - day2.date.getDate();
+    //     //   // });
+    //     //   // for (const range of this.selectedRanges) {
+    //     //   //   let current = range.dates.start;
+    //     //   //   const end = range.dates.end;
+    //     //   //   if (current && end) {
+    //     //   //     while (current <= end) {
+    //     //   //       const date_main = current.toISOString().slice(0, 10);
+    //     //   //       const date_same = this.holidayDate.some((day) => {
+    //     //   //         const date_check = day.date.toISOString().slice(0, 10);
+    //     //   //         return date_main === date_check;
+    //     //   //       });
+    //     //   //       if (!date_same) {
+    //     //   //         this.holidayDate.push({
+    //     //   //           date: current,
+    //     //   //           canTrade: "N",
+    //     //   //           description: null,
+    //     //   //         });
+    //     //   //       }
+    //     //   //       current.setDate(current.getDate() + 1);
+    //     //   //       await Promise.resolve(); // ให้ async ทำงานทีละรอบ
+    //     //   //     }
+    //     //   //   }
+    //     //   // }
+    //   } else {
+    //     //   // await this.selectedRanges.forEach((range) => {
+    //     //   //   const current = range.dates.start;
+    //     //   //   const end = range.dates.end;
+    //     //   //   if (current && end) {
+    //     //   //     while (current <= end) {
+    //     //   //       this.holidayDate.push({
+    //     //   //         date: new Date(current),
+    //     //   //         canTrade: 'N',
+    //     //   //         description: null,
+    //     //   //       });
+    //     //   //       current.setDate(current.getDate() + 1);
+    //     //   //     }
+    //     //   //   }
+    //     //   // });
+    //     for (const range of this.selectedRanges) {
+    //       let current = range.dates.start;
+    //       const end = range.dates.end;
+    //       if (current && end) {
+    //         while (current <= end) {
+    //           this.holidayDate.push({
+    //             date: current,
+    //             canTrade: "N",
+    //             description: null,
+    //           });
+    //           current.setDate(current.getDate() + 1);
+    //           await Promise.resolve();
+    //         }
+    //       }
+    //     }
+    //     // }
+    //     // let current = dates.start;
+    //     // let end = dates.end;
+    //     // while (current <= end) {
+    //     //   // this.holidayDate.push({
+    //     //   //   date: new Date(current),
+    //     //   //   canTrade: "N",
+    //     //   //   description: null,
+    //     //   // });
+    //     //   current.setDate(current.getDate() + 1);
+    //   }
+    //   console.log(this.selectedRanges.length);
+    // },
+
+    allSelectedDates() {
       if (this.holidayDate.length !== 0) {
-        // this.holidayDate.forEach((day) => {
-        //   if (
-        //     !this.isRangeOverlapping(day.date, day.date, this.selectedRanges)
-        //   ) {
-        //     this.holidayDate = this.holidayDate.filter(
-        //       (item) => item.date !== day.date,
-        //     );
-        //   }
-        // });
-        // await this.selectedRanges.forEach((range) => {
-        //   const current = range.dates.start;
-        //   const end = range.dates.end;
-        //   if (current && end) {
-        //     while (current <= end) {
-        //       const date_same = this.holidayDate.some((day) => {
-        //         const date_main = current.toISOString().slice(0, 10);
-        //         const date_check = day.date.toISOString().slice(0, 10);
-        //         return date_main === date_check;
-        //       });
-        //       if (!date_same) {
-        //         this.holidayDate.push({
-        //           date: new Date(current),
-        //           canTrade: 'N',
-        //           description: null,
-        //         });
-        //       }
-        //       current.setDate(current.getDate() + 1);
-        //     }
-        //   }
-        // });
-        // this.holidayDate.sort((day1, day2) => {
-        //   const monthDiff = day1.date.getMonth() - day2.date.getMonth();
-        //   if (monthDiff !== 0) return monthDiff;
-        //   return day1.date.getDate() - day2.date.getDate();
-        // });
-        for (const range of this.selectedRanges) {
-          let current = range.dates.start;
-          const end = range.dates.end;
-
-          if (current && end) {
-            while (current <= end) {
-              const date_main = current.toISOString().slice(0, 10);
-              const date_same = this.holidayDate.some((day) => {
-                const date_check = day.date.toISOString().slice(0, 10);
-                return date_main === date_check;
-              });
-
-              if (!date_same) {
-                this.holidayDate.push({
-                  date: current,
-                  canTrade: "N",
-                  description: null,
-                });
-              }
-
-              current.setDate(current.getDate() + 1);
-              await Promise.resolve(); // ให้ async ทำงานทีละรอบ
-            }
+        this.holidayDate.forEach((day) => {
+          if (
+            !this.isRangeOverlapping(day.date, day.date, this.selectedRanges)
+          ) {
+            this.holidayDate = this.holidayDate.filter(
+              (item) => item.date !== day.date
+            );
           }
-        }
-      } else {
-        // await this.selectedRanges.forEach((range) => {
-        //   const current = range.dates.start;
-        //   const end = range.dates.end;
-        //   if (current && end) {
-        //     while (current <= end) {
-        //       this.holidayDate.push({
-        //         date: new Date(current),
-        //         canTrade: 'N',
-        //         description: null,
-        //       });
-        //       current.setDate(current.getDate() + 1);
-        //     }
-        //   }
-        // });
-        for (const range of this.selectedRanges) {
-          let current = range.dates.start;
-          const end = range.dates.end;
+        });
 
-          if (current && end) {
-            while (current <= end) {
+        this.selectedRanges.forEach((range) => {
+          const current = new Date(range.dates.start);
+          const end = new Date(range.dates.end);
+
+          while (current <= end) {
+            const date_same = this.holidayDate.some((day) => {
+              const date_main = current.toISOString().slice(0, 10);
+              const date_check = day.date.toISOString().slice(0, 10);
+              return date_main === date_check;
+            });
+            if (!date_same) {
               this.holidayDate.push({
-                date: current,
+                date: new Date(current),
                 canTrade: "N",
                 description: null,
               });
-              current.setDate(current.getDate() + 1);
-              await Promise.resolve();
+            }
+            current.setDate(current.getDate() + 1);
+          }
+        });
+
+        this.holidayDate.sort((day1, day2) => {
+          const monthDiff = day1.date.getMonth() - day2.date.getMonth();
+          if (monthDiff !== 0) return monthDiff;
+
+          return day1.date.getDate() - day2.date.getDate();
+        });
+      } else {
+        this.selectedRanges.forEach((range) => {
+          const current = new Date(range.dates.start);
+          const end = new Date(range.dates.end);
+
+          while (current <= end) {
+            this.holidayDate.push({
+              date: new Date(current),
+              canTrade: "N",
+              description: null,
+            });
+            current.setDate(current.getDate() + 1);
+          }
+        });
+      }
+    },
+
+    handleDayClick(day: any) {
+      if (!this.status.confirm) {
+        if (this.date) {
+          if (
+            !this.isRangeOverlapping(
+              this.date.start,
+              this.date.end,
+              this.selectedRanges
+            )
+          ) {
+            const diffDays =
+              (this.date.start.getTime() - new Date().getTime()) /
+              (1000 * 60 * 60 * 24);
+            if (diffDays >= 3) {
+              // this.selectedRanges.push({
+              //   start: this.date.start,
+              //   end: this.date.end,
+              // });
+              this.selectedRanges.push({
+                dot: "blue",
+                dates: {
+                  start: this.date.start,
+                  end: this.date.end,
+                },
+              });
+            }
+          } else {
+            this.selectedRanges = this.removeOverlappingRanges(
+              this.date.start,
+              this.date.end,
+              this.selectedRanges
+            );
+          }
+          this.date = null;
+          this.tempRange = { start: null, end: null };
+        } else {
+          const diffDays =
+            (day.date.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24);
+          if (diffDays >= 3) {
+            if (day.weekday !== 1 || day.weekday !== 7) {
+              if (this.tempRange.start && !this.tempRange.end) {
+                const start = this.tempRange.start;
+                const end: Date = day.date;
+                if (start === end) {
+                  if (
+                    this.isRangeOverlapping(start, end, this.selectedRanges)
+                  ) {
+                    this.selectedRanges = this.removeOverlappingRanges(
+                      start,
+                      end,
+                      this.selectedRanges
+                    );
+                  }
+                }
+                this.tempRange = { start: null, end: null };
+              } else {
+                this.tempRange = { start: day.date, end: null };
+              }
             }
           }
         }
       }
     },
 
-    // handleDayClick(day: any) {
-    //   if (!this.status.confirm) {
-    //     if (this.date) {
-    //       if (
-    //         !this.isRangeOverlapping(
-    //           this.date.start,
-    //           this.date.end,
-    //           this.selectedRanges
-    //         )
-    //       ) {
-    //         const diffDays =
-    //           (this.date.start.getTime() - new Date().getTime()) /
-    //           (1000 * 60 * 60 * 24);
-    //         if (diffDays >= 3) {
-    //           this.selectedRanges.push({
-    //             start: this.date.start,
-    //             end: this.date.end,
-    //           });
-    //         }
-    //       } else {
-    //         this.selectedRanges = this.removeOverlappingRanges(
-    //           this.date.start,
-    //           this.date.end,
-    //           this.selectedRanges
-    //         );
-    //       }
-    //       this.date = null;
-    //       this.tempRange = { start: null, end: null };
-    //     } else {
-    //       const diffDays =
-    //         (day.date.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24);
-    //       if (diffDays >= 3) {
-    //         if (day.weekday !== 1 || day.weekday !== 7) {
-    //           if (this.tempRange.start && !this.tempRange.end) {
-    //             const start = this.tempRange.start;
-    //             const end: Date = day.date;
-    //             if (start === end) {
-    //               if (
-    //                 this.isRangeOverlapping(start, end, this.selectedRanges)
-    //               ) {
-    //                 this.selectedRanges = this.removeOverlappingRanges(
-    //                   start,
-    //                   end,
-    //                   this.selectedRanges
-    //                 );
-    //               }
-    //             }
-    //             this.tempRange = { start: null, end: null };
-    //           } else {
-    //             this.tempRange = { start: day.date, end: null };
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // },
-
-    isRangeOverlapping(
-      start: Date,
-      end: Date,
-      ranges: { start: Date; end: Date }[]
-    ) {
+    isRangeOverlapping(start: Date, end: Date, ranges: holidayRanges[]) {
       const normalize = (d: Date) =>
         new Date(d.getFullYear(), d.getMonth(), d.getDate());
       const normStart = normalize(start);
       const normEnd = normalize(end);
 
       return ranges.some((range) => {
-        const rangeStart = normalize(range.start);
-        const rangeEnd = normalize(range.end);
+        const rangeStart = normalize(range.dates.start);
+        const rangeEnd = normalize(range.dates.end);
         return !(normEnd < rangeStart || normStart > rangeEnd);
       });
     },
 
-    removeOverlappingRanges(
-      start: Date,
-      end: Date,
-      ranges: { start: Date; end: Date }[]
-    ) {
+    removeOverlappingRanges(start: Date, end: Date, ranges: holidayRanges[]) {
       return ranges.filter((range) => {
-        const holiday = [{ start: range.start, end: range.end }];
+        const holiday = [
+          { dates: { start: range.dates.start, end: range.dates.end } },
+        ];
         return !this.isRangeOverlapping(start, end, holiday);
       });
     },
@@ -662,6 +748,8 @@ export default {
         ...this.item,
         year: this.item.year + 1,
       };
+
+      this.fetchHoliday();
 
       // try {
       //   const response = await $fetch<any>("/api/holiday/query", {

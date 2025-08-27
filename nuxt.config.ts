@@ -2,11 +2,28 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
+  ssr: false,
+  typescript: {
+    shim: false,
+    tsConfig: {
+      compilerOptions: {
+        baseUrl: ".",
+      },
+    },
+  },
+  vite: {
+    vue: {
+      template: {
+        transformAssetUrls,
+      },
+    },
+    plugins: [tailwindcss()],
+  },
+  hooks: {},
+  devtools: { enabled: true },
   build: {
     transpile: ["vuetify"],
   },
-  hooks: {},
   modules: [
     "@pinia/nuxt",
     "pinia-plugin-persistedstate/nuxt",
@@ -18,16 +35,9 @@ export default defineNuxtConfig({
       });
     },
   ],
-  devtools: { enabled: true },
   css: ["@progress/kendo-theme-default/dist/all.css", "~/assets/css/main.css"],
-  vite: {
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
-    },
-    plugins: [tailwindcss()],
-  },
+  spaLoadingTemplate: "loading-template.html",
 
   components: true,
+  compatibilityDate: "2025-07-15",
 });

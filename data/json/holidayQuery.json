@@ -1,0 +1,76 @@
+{
+  "lists": [
+    {
+      "holidaydate": "2025-01-01",
+      "cantrade": "X",
+      "description": "Happy New Year",
+      "halfdayflag": "Y"
+    },
+    {
+      "holidaydate": "2025-02-14",
+      "cantrade": "Y",
+      "description": "Valentine's Day",
+      "halfdayflag": "N"
+    },
+    {
+      "holidaydate": "2025-04-06",
+      "cantrade": "N",
+      "description": "Chakri Memorial Day",
+      "halfdayflag": "N"
+    },
+    {
+      "holidaydate": "2025-04-13",
+      "cantrade": "N",
+      "description": "Songkran Festival",
+      "halfdayflag": "N"
+    },
+    {
+      "holidaydate": "2025-04-14",
+      "cantrade": "N",
+      "description": "Songkran Festival",
+      "halfdayflag": "N"
+    },
+    {
+      "holidaydate": "2025-04-15",
+      "cantrade": "N",
+      "description": "Songkran Festival",
+      "halfdayflag": "N"
+    },
+    {
+      "holidaydate": "2025-05-01",
+      "cantrade": "X",
+      "description": "Labour Day",
+      "halfdayflag": "Y"
+    },
+    {
+      "holidaydate": "2025-06-09",
+      "cantrade": "Y",
+      "description": "King's Birthday",
+      "halfdayflag": "N"
+    },
+    {
+      "holidaydate": "2025-07-17",
+      "cantrade": "N",
+      "description": "Asalha Puja",
+      "halfdayflag": "N"
+    },
+    {
+      "holidaydate": "2025-08-12",
+      "cantrade": "X",
+      "description": "Mother's Day",
+      "halfdayflag": "Y"
+    },
+    {
+      "holidaydate": "2025-10-23",
+      "cantrade": "N",
+      "description": "Chulalongkorn Day",
+      "halfdayflag": "N"
+    },
+    {
+      "holidaydate": "2025-12-31",
+      "cantrade": "X",
+      "description": "New Year's Eve",
+      "halfdayflag": "Y"
+    }
+  ]
+}

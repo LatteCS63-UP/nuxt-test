@@ -14,13 +14,13 @@
   </v-locale-provider>
 </template>
 <script lang="ts">
-const title = 'Admin - Global Stock Portal';
+const title = "Admin - Global Stock Portal";
 useHead({
   meta: [{ content: title }],
   titleTemplate: (titleChunk) => {
     return titleChunk
       ? `${titleChunk} - Admin Page`
-      : 'Admin - Global Stock Portal';
+      : "Admin - Global Stock Portal";
   },
 });
 
